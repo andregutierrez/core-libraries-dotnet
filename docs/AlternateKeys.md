@@ -324,12 +324,3 @@ public class UsuarioApiDto
     // Chave alternativa é estável para clientes da API
 }
 ```
-
-## Próximos Passos
-
-Para completar a implementação, considere:
-1. **Validações adicionais**: Regras de negócio para chaves alternativas
-2. **Repositórios especializados**: Métodos para busca por chave alternativa
-3. **Eventos de domínio**: Incluir chaves alternativas em eventos
-4. **Testes unitários**: Cobertura completa das funcionalidades
-5. **Documentação de API**: Exemplos de uso em integrações

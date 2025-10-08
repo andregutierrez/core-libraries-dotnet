@@ -380,13 +380,3 @@ public class ContaBancaria : Aggregate<EntityId<Guid>>
     }
 }
 ```
-
-## Próximos Passos
-
-Para completar a implementação, considere:
-1. **Event Handlers**: Implementar handlers específicos para cada tipo de evento
-2. **Event Store**: Persistir eventos para auditoria e replay
-3. **Event Sourcing**: Usar eventos como fonte única da verdade
-4. **Message Queue**: Integrar com sistemas de mensageria
-5. **Testes**: Criar testes unitários para eventos e handlers
-6. **Monitoramento**: Implementar métricas e alertas para eventos
