@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Gd2Ir7wvAN0=",
+  "dgSpecHash": "m6InZ80VOP0=",
   "success": true,
-  "projectFilePath": "D:\\Repository\\projects\\core-libraries-dotnet\\src\\Core.Libraries.Infra.Caching\\Core.Libraries.Infra.Caching.csproj",
+  "projectFilePath": "/home/techleap/Projects/repository/core-libraries-dotnet/src/Core.Libraries.Infra.Caching/Core.Libraries.Infra.Caching.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

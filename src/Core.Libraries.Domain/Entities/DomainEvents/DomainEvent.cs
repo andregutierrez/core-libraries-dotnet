@@ -1,3 +1,5 @@
+using System.Threading;
+
 namespace Core.Libraries.Domain.Entities.DomainEvents;
 
 /// <summary>
@@ -16,8 +18,12 @@ public class DomainEvent
     /// <param name="entity">A entidade relacionada ao evento.</param>
     /// <param name="eventData">Os dados do evento de domínio.</param>
     /// <param name="eventOrder">A ordem do evento.</param>
+    /// <exception cref="ArgumentNullException">Lançado quando entity ou eventData são null.</exception>
     public DomainEvent(object entity, object eventData, long eventOrder)
     {
+        ArgumentNullException.ThrowIfNull(entity);
+        ArgumentNullException.ThrowIfNull(eventData);
+
         Entity = entity;
         EventData = eventData;
         Order = eventOrder;
@@ -29,9 +35,9 @@ public class DomainEvent
     public object EventData { get; }
 
     /// <summary>
-    /// Obtém ou define a entidade relacionada ao evento.
+    /// Obtém a entidade relacionada ao evento.
     /// </summary>
-    public object Entity { get; set; }
+    public object Entity { get; }
 
     /// <summary>
     /// Obtém a ordem do evento.
@@ -40,13 +46,18 @@ public class DomainEvent
 
     /// <summary>
     /// Cria um novo evento de domínio com os dados especificados e incrementa a ordem do evento.
+    /// Este é o método recomendado para criar instâncias de <see cref="DomainEvent"/>.
     /// </summary>
     /// <param name="entity">A entidade relacionada ao evento.</param>
     /// <param name="eventData">Os dados do evento de domínio.</param>
     /// <returns>Uma nova instância da classe <see cref="DomainEvent"/>.</returns>
+    /// <exception cref="ArgumentNullException">Lançado quando entity ou eventData são null.</exception>
     public static DomainEvent Create(object entity, object eventData)
     {
-        _last = Interlocked.Increment(ref _last);
-        return new DomainEvent(entity, eventData, _last);
+        ArgumentNullException.ThrowIfNull(entity);
+        ArgumentNullException.ThrowIfNull(eventData);
+
+        var order = Interlocked.Increment(ref _last);
+        return new DomainEvent(entity, eventData, order);
     }
 }

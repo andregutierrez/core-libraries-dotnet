@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Oex6r1DUN6Y=",
+  "dgSpecHash": "Y8E/bXlFkHg=",
   "success": true,
-  "projectFilePath": "D:\\Repository\\projects\\core-libraries-dotnet\\src\\Core.Libraries.Infra.MessageQueue\\Core.Libraries.Infra.MessageQueue.csproj",
+  "projectFilePath": "/home/techleap/Projects/repository/core-libraries-dotnet/src/Core.Libraries.Infra.MessageQueue/Core.Libraries.Infra.MessageQueue.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

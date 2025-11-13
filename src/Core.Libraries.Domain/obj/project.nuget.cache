@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "eYQjrSSB3TI=",
+  "dgSpecHash": "ZeUDrZ6mczs=",
   "success": true,
-  "projectFilePath": "D:\\Repository\\projects\\core-libraries-dotnet\\src\\Core.Libraries.Domain\\Core.Libraries.Domain.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/home/techleap/Projects/repository/core-libraries-dotnet/src/Core.Libraries.Domain/Core.Libraries.Domain.csproj",
+  "expectedPackageFiles": [
+    "/home/techleap/.nuget/packages/fluentvalidation/12.0.0/fluentvalidation.12.0.0.nupkg.sha512",
+    "/home/techleap/.nuget/packages/mediatr/12.2.0/mediatr.12.2.0.nupkg.sha512",
+    "/home/techleap/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
+    "/home/techleap/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.2/microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
+    "/home/techleap/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.3/microsoft.extensions.logging.abstractions.8.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

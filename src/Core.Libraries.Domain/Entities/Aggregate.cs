@@ -1,3 +1,5 @@
+using Core.Libraries.Domain.Entities.DomainEvents;
+
 namespace Core.Libraries.Domain.Entities;
 
 /// <summary>
@@ -18,7 +20,7 @@ public abstract class Aggregate<TEntityId> : Entity<TEntityId>, IHasDomainEvents
     /// Inicializa uma nova instância da classe <see cref="Aggregate{TEntityId}"/>.
     /// Este construtor é tipicamente usado por frameworks ORM ou serialização.
     /// </summary>
-    protected Aggregate() : base() { }
+    protected Aggregate() { }
 
     /// <summary>
     /// Inicializa uma nova instância da classe <see cref="Aggregate{TEntityId}"/> com um identificador especificado.
@@ -32,8 +34,12 @@ public abstract class Aggregate<TEntityId> : Entity<TEntityId>, IHasDomainEvents
     /// publicados após a persistência bem-sucedida do agregado.
     /// </summary>
     /// <param name="eventData">Os dados do evento a ser registrado.</param>
+    /// <exception cref="ArgumentNullException">Lançado quando eventData é null.</exception>
     public void RegisterEvent(object eventData)
-        => _domainEvents.RegisterEvent(eventData);
+    {
+        ArgumentNullException.ThrowIfNull(eventData);
+        _domainEvents.RegisterEvent(this, eventData);
+    }
 
     /// <summary>
     /// Obtém a lista de eventos de domínio associados a este agregado.

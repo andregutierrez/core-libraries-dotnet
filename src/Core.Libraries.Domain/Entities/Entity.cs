@@ -5,32 +5,32 @@ namespace Core.Libraries.Domain.Entities;
 /// Fornece funcionalidade comum para identificação, comparação e igualdade de entidades.
 /// </summary>
 /// <typeparam name="TKey">O tipo do identificador da entidade, deve implementar <see cref="IEntityId"/>.</typeparam>
-public abstract class Entity<TKey> : IComparable<Entity<TKey>>
+public abstract class Entity<TKey> : IComparable<Entity<TKey>>, IEquatable<Entity<TKey>>
     where TKey : IEntityId
 {
     /// <summary>
     /// O identificador único para esta entidade.
     /// </summary>
-    protected TKey _id = default!;
+    protected TKey _id;
 
     /// <summary>
     /// Inicializa uma nova instância da classe <see cref="Entity{TKey}"/>.
     /// Este construtor é tipicamente usado por frameworks ORM ou serialização.
     /// </summary>
-    protected Entity() 
+    protected Entity()
         => _id = default!;
 
     /// <summary>
     /// Inicializa uma nova instância da classe <see cref="Entity{TKey}"/> com um identificador especificado.
     /// </summary>
     /// <param name="id">O identificador único para esta entidade.</param>
-    protected Entity(TKey id) 
+    protected Entity(TKey id)
         => _id = id;
 
     /// <summary>
     /// Obtém o identificador único para esta entidade.
     /// </summary>
-    public TKey Id 
+    public TKey Id
         => _id;
 
     /// <summary>
@@ -39,7 +39,6 @@ public abstract class Entity<TKey> : IComparable<Entity<TKey>>
     /// </summary>
     protected bool IsTransient =>
         EqualityComparer<TKey>.Default.Equals(Id, default);
-
 
     /// <summary>
     /// Compara esta entidade com outra entidade para fins de ordenação.
@@ -61,6 +60,7 @@ public abstract class Entity<TKey> : IComparable<Entity<TKey>>
 
         if (IsTransient)
             return -1;
+
         if (other.IsTransient)
             return 1;
 
@@ -89,6 +89,27 @@ public abstract class Entity<TKey> : IComparable<Entity<TKey>>
     }
 
     /// <summary>
+    /// Determina se o objeto especificado é igual a esta entidade.
+    /// Duas entidades são consideradas iguais se tiverem o mesmo tipo e o mesmo identificador.
+    /// Entidades transitórias nunca são iguais a outras entidades.
+    /// </summary>
+    /// <param name="obj">A entidade para comparar com esta entidade.</param>
+    /// <returns>true se o objeto especificado for igual a esta entidade; caso contrário, false.</returns>
+    public bool Equals(Entity<TKey>? obj)
+    {
+        if (ReferenceEquals(this, obj))
+            return true;
+
+        if (obj is not Entity<TKey> other)
+            return false;
+
+        if (IsTransient || other.IsTransient)
+            return false;
+
+        return Id.Equals(other.Id);
+    }
+
+    /// <summary>
     /// Retorna um código hash para esta entidade.
     /// Para entidades transitórias, retorna o código hash base.
     /// Para entidades persistidas, retorna o código hash do identificador.
@@ -98,7 +119,7 @@ public abstract class Entity<TKey> : IComparable<Entity<TKey>>
         => IsTransient
             ? base.GetHashCode()
             : Id.GetHashCode();
-   
+
     /// <summary>
     /// Retorna uma representação em string desta entidade.
     /// </summary>
@@ -106,4 +127,3 @@ public abstract class Entity<TKey> : IComparable<Entity<TKey>>
     public override string ToString()
         => $"{GetType().Name} [Id={Id}]";
 }
-

@@ -1,0 +1,56 @@
+{
+    // Configurações para projetos .NET
+    "files.exclude": {
+        "**/bin": true,
+        "**/obj": true,
+        "**/TestResults": true,
+        "**/nupkg": false
+    },
+    "search.exclude": {
+        "**/bin": true,
+        "**/obj": true,
+        "**/TestResults": true,
+        "**/.vs": true
+    },
+    "files.watcherExclude": {
+        "**/bin/**": true,
+        "**/obj/**": true,
+        "**/TestResults/**": true
+    },
+    // Configurações do OmniSharp (C# extension)
+    "omnisharp.enableRoslynAnalyzers": true,
+    "omnisharp.enableEditorConfigSupport": true,
+    "omnisharp.organizeImportsOnFormat": true,
+    // Configurações do editor para C#
+    "[csharp]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        }
+    },
+    // Configurações de build
+    "dotnet.defaultSolution": "Core.Libraries.sln",
+    // Configurações de teste para C# Dev Kit
+    "dotnet.testWindow.logging": {
+        "engineLogging": false,
+        "testResult": false,
+        "adapter": false
+    },
+    // Habilitar CodeLens para testes (desabilitado temporariamente devido a problemas de travamento)
+    "dotnet.testExplorer.codeLens": false,
+    "dotnet.testExplorer.useTreeView": true,
+    // Configurações de debug para testes
+    "debug.internalConsoleOptions": "neverOpen",
+    "debug.console.fontSize": 12,
+    "debug.console.wordWrap": true,
+    // Configurações específicas para debug de testes
+    "dotnet.unitTests.debuggingOptions": {
+        "justMyCode": false
+    },
+    // Configurações adicionais para evitar travamento do debugger
+    "dotnet.testExplorer.autoRun": false,
+    "dotnet.testExplorer.autoReveal": false,
+    // Timeout para operações de debug (em milissegundos)
+    "debug.timeout": 30000
+}
+

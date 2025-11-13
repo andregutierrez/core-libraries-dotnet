@@ -12,12 +12,18 @@ public class DomainEventList : EntityList<DomainEvent>, IDomainEventList
     /// <summary>
     /// Registra um novo evento de domínio para ser publicado posteriormente.
     /// </summary>
+    /// <param name="entity">A entidade (agregado) que gerou o evento.</param>
     /// <param name="eventData">
     /// Os dados do evento que descrevem a ocorrência do domínio. 
     /// Será encapsulado em um <see cref="DomainEvent"/> e rastreado na lista de eventos.
     /// </param>
-    public void RegisterEvent(object eventData)
-        => _list.Add(DomainEvent.Create(this, eventData));
+    /// <exception cref="ArgumentNullException">Lançado quando entity ou eventData são null.</exception>
+    public void RegisterEvent(object entity, object eventData)
+    {
+        ArgumentNullException.ThrowIfNull(entity);
+        ArgumentNullException.ThrowIfNull(eventData);
+        _list.Add(DomainEvent.Create(entity, eventData));
+    }
 
     /// <summary>
     /// Limpa todos os eventos de domínio registrados neste agregado.

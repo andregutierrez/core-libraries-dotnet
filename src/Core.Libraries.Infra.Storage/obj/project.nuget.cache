@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9YwN/yT3evU=",
+  "dgSpecHash": "578yzNEm2hM=",
   "success": true,
-  "projectFilePath": "D:\\Repository\\projects\\core-libraries-dotnet\\src\\Core.Libraries.Infra.Storage\\Core.Libraries.Infra.Storage.csproj",
+  "projectFilePath": "/home/techleap/Projects/repository/core-libraries-dotnet/src/Core.Libraries.Infra.Storage/Core.Libraries.Infra.Storage.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

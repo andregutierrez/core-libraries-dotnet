@@ -1,0 +1,107 @@
+version: '3.8'
+
+services:
+  # ============================================================================
+  # POSTGRESQL DATABASE
+  # ============================================================================
+  postgres:
+    image: postgres:16-alpine
+    container_name: people-postgres
+    environment:
+      POSTGRES_DB: PeopleDb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - people-network
+
+  # ============================================================================
+  # DATABASE MIGRATIONS
+  # ============================================================================
+  # Runs EF Core migrations to set up the database schema.
+  # Waits for PostgreSQL to be ready before executing migrations.
+  # Uses SDK image to have access to dotnet ef tool.
+  migrations:
+    image: mcr.microsoft.com/dotnet/sdk:9.0
+    container_name: people-migrations
+    working_dir: /src
+    volumes:
+      - .:/src
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__PeopleDb=Host=postgres;Port=5432;Database=PeopleDb;Username=postgres;Password=postgres;Pooling=true;
+    command: >
+      sh -c "
+        echo 'Installing EF Core tools...' &&
+        dotnet tool install --global dotnet-ef --version 9.0.0 &&
+        export PATH=\"$$PATH:/root/.dotnet/tools\" &&
+        echo 'Waiting for PostgreSQL to be ready...' &&
+        until pg_isready -h postgres -p 5432 -U postgres 2>/dev/null; do
+          echo 'PostgreSQL is unavailable - sleeping'
+          sleep 2
+        done &&
+        echo 'PostgreSQL is up - executing migrations...' &&
+        dotnet ef database update --project example/People.Infra.Data/People.Infra.Data.csproj --startup-project example/People.Api/People.Api.csproj --context PeopleDbContext --verbose
+      "
+    networks:
+      - people-network
+    profiles:
+      - migrations
+
+  # ============================================================================
+  # API APPLICATION
+  # ============================================================================
+  # The main API application that serves HTTP requests.
+  # Waits for migrations to complete before starting.
+  api:
+    build:
+      context: .
+      dockerfile: example/People.Api/Dockerfile
+    container_name: people-api
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__PeopleDb=Host=postgres;Port=5432;Database=PeopleDb;Username=postgres;Password=postgres;Pooling=true;
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    volumes:
+      # Mount source code for hot reload in development (optional)
+      - ./example/People.Api:/app
+      - ./example/People.Application:/src/example/People.Application
+      - ./example/People.Domain:/src/example/People.Domain
+      - ./example/People.Infra.Data:/src/example/People.Infra.Data
+      - ./example/People.IoC:/src/example/People.IoC
+    networks:
+      - people-network
+    restart: unless-stopped
+
+# ============================================================================
+# NETWORKS
+# ============================================================================
+networks:
+  people-network:
+    driver: bridge
+
+# ============================================================================
+# VOLUMES
+# ============================================================================
+volumes:
+  postgres_data:
+    driver: local
+

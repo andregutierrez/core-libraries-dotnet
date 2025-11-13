@@ -1,0 +1,83 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach",
+            "justMyCode": false
+        },
+        {
+            "name": "Debug Test (Single)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build:debug",
+            "program": "dotnet",
+            "args": [
+                "test",
+                "${workspaceFolder}/tests/Core.Libraries.Domain.Tests/Core.Libraries.Domain.Tests.csproj",
+                "--filter",
+                "FullyQualifiedName~${input:testName}",
+                "--logger",
+                "console;verbosity=normal",
+                "--no-build"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "stopAtEntry": false,
+            "justMyCode": false,
+            "requireExactSource": false
+        },
+        {
+            "name": "Debug All Tests",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build:debug",
+            "program": "dotnet",
+            "args": [
+                "test",
+                "${workspaceFolder}/tests/Core.Libraries.Domain.Tests/Core.Libraries.Domain.Tests.csproj",
+                "--logger",
+                "console;verbosity=normal",
+                "--no-build"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "stopAtEntry": false,
+            "justMyCode": false,
+            "requireExactSource": false
+        },
+        {
+            "name": "Debug Current Test",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build:debug",
+            "program": "dotnet",
+            "args": [
+                "test",
+                "${workspaceFolder}/tests/Core.Libraries.Domain.Tests/Core.Libraries.Domain.Tests.csproj",
+                "--filter",
+                "FullyQualifiedName=${selectedText}",
+                "--logger",
+                "console;verbosity=detailed",
+                "--no-build"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "stopAtEntry": false,
+            "justMyCode": false,
+            "requireExactSource": false
+        }
+    ],
+    "inputs": [
+        {
+            "id": "testName",
+            "type": "promptString",
+            "description": "Nome do teste (ex: CpfTests.Constructor_WithValidCpf_ShouldCreateInstance)"
+        }
+    ],
+    "compounds": []
+}

@@ -1,0 +1,17 @@
+# Override file for local development
+# This file is automatically merged with docker-compose.yml
+version: '3.8'
+
+services:
+  api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+    # Uncomment for hot reload in development
+    # volumes:
+    #   - ./example/People.Api:/app
+    #   - ./example/People.Application:/src/example/People.Application
+    #   - ./example/People.Domain:/src/example/People.Domain
+    #   - ./example/People.Infra.Data:/src/example/People.Infra.Data
+    #   - ./example/People.IoC:/src/example/People.IoC
+

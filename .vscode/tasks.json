@@ -1,0 +1,275 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "${workspaceFolder}/Core.Libraries.sln",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build:release",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "${workspaceFolder}/Core.Libraries.sln",
+                "--configuration",
+                "Release",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "clean",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "clean",
+                "${workspaceFolder}/Core.Libraries.sln",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "rebuild",
+            "dependsOn": [
+                "clean",
+                "build"
+            ],
+            "dependsOrder": "sequence",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "restore",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "restore",
+                "${workspaceFolder}/Core.Libraries.sln"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "test",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "test",
+                "${workspaceFolder}/Core.Libraries.sln",
+                "--no-build",
+                "--collect:\"XPlat Code Coverage\"",
+                "--results-directory",
+                "${workspaceFolder}/tests/TestResults",
+                "--logger",
+                "trx;LogFileName=test-results.trx",
+                "--verbosity",
+                "normal"
+            ],
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "focus": true
+            },
+            "problemMatcher": "$msCompile",
+            "dependsOn": "build"
+        },
+        {
+            "label": "test:watch",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "watch",
+                "test",
+                "${workspaceFolder}/Core.Libraries.sln",
+                "--verbosity",
+                "normal"
+            ],
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "focus": true
+            },
+            "problemMatcher": "$msCompile",
+            "isBackground": true
+        },
+        {
+            "label": "test:coverage",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "test",
+                "${workspaceFolder}/Core.Libraries.sln",
+                "--collect:\"XPlat Code Coverage\"",
+                "--results-directory",
+                "${workspaceFolder}/tests/TestResults",
+                "--verbosity",
+                "normal"
+            ],
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "focus": true
+            },
+            "problemMatcher": "$msCompile",
+            "dependsOn": "build"
+        },
+        {
+            "label": "test:coverage:report",
+            "command": "${workspaceFolder}/scripts/generate-coverage-report.sh",
+            "type": "shell",
+            "args": [],
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "focus": true
+            },
+            "problemMatcher": [],
+            "options": {
+                "env": {
+                    "WORKSPACE_FOLDER": "${workspaceFolder}"
+                }
+            }
+        },
+        {
+            "label": "test:coverage:full",
+            "dependsOn": [
+                "test:coverage",
+                "test:coverage:report"
+            ],
+            "dependsOrder": "sequence",
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "focus": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "pack",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "pack",
+                "${workspaceFolder}/Core.Libraries.sln",
+                "--configuration",
+                "Release",
+                "--no-build",
+                "--output",
+                "${workspaceFolder}/nupkg"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "focus": true
+            },
+            "problemMatcher": "$msCompile",
+            "dependsOn": "build:release"
+        },
+        {
+            "label": "pack:debug",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "pack",
+                "${workspaceFolder}/Core.Libraries.sln",
+                "--configuration",
+                "Debug",
+                "--no-build",
+                "--output",
+                "${workspaceFolder}/nupkg"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "focus": true
+            },
+            "problemMatcher": "$msCompile",
+            "dependsOn": "build"
+        },
+        {
+            "label": "build-and-pack",
+            "dependsOn": [
+                "build:release",
+                "pack"
+            ],
+            "dependsOrder": "sequence",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "focus": true
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build:debug",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "${workspaceFolder}/Core.Libraries.sln",
+                "--configuration",
+                "Debug",
+                "/property:GenerateFullPaths=true",
+                "/property:DebugType=portable",
+                "/property:DebugSymbols=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared"
+            },
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

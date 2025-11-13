@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yVu244OwdGs=",
+  "dgSpecHash": "C9rYRvwhajY=",
   "success": true,
-  "projectFilePath": "D:\\Repository\\projects\\core-libraries-dotnet\\src\\Core.Libraries.Infra.Http\\Core.Libraries.Infra.Http.csproj",
+  "projectFilePath": "/home/techleap/Projects/repository/core-libraries-dotnet/src/Core.Libraries.Infra.Http/Core.Libraries.Infra.Http.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
