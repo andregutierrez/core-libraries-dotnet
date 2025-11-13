@@ -1,8 +1,8 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 
-namespace Core.LibrariesApplication.Behavior;
+namespace Core.Libraries.Application.Pipelines;
 
 using System.Security.Cryptography;
 using System.Text;

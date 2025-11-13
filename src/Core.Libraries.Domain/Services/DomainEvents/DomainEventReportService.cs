@@ -1,6 +1,6 @@
 using Core.Libraries.Domain.Entities.DomainEvents;
 
-namespace Core.LibrariesDomain.Services.DomainEvents;
+namespace Core.Libraries.Domain.Services.DomainEvents;
 
 /// <summary>
 /// Collects and exposes domain events raised during the execution of a use case or request.

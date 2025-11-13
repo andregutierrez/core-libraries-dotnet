@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Core.Libraries.Domain.Entities;
 using Core.Libraries.Domain.Entities.Identifiers;
-using Core.LibrariesInfra.Data.Postgress.Repositories;
 using People.Domain.Persons.Entities;
-using People.Domain.Persons.Statuses;
 using People.Domain.Persons.Services.Repositories;
 using People.Application.Services.Repositories;
 using People.Application.DTOs;
 using People.Infra.Data.Context;
+using Core.Libraries.Infra.Data.Repositories;
+using People.Domain.Persons.Entities.Statuses;
 
 namespace People.Infra.Data.Repositories;
 

@@ -1,4 +1,4 @@
-﻿namespace Core.LibrariesDomain.Services.Realtime;
+namespace Core.Libraries.Application.Services.Realtime;
 
 /// <summary>
 /// Represents the unique identifier of a real-time communication channel.

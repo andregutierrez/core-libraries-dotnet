@@ -1,7 +1,8 @@
 namespace People.Application.UseCases.Persons.Commands.CreatePerson;
 
-using Core.LibrariesApplication.Commands;
-using Core.LibrariesDomain.Services.Repositories;
+using Core.Libraries.Application.Commands;
+using Core.Libraries.Domain.Services.Repositories;
+using People.Domain.Persons.Entities;
 using People.Domain.Persons.Services.Repositories;
 using People.Domain.Persons.ValueObjects;
 

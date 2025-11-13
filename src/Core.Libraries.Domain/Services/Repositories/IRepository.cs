@@ -2,7 +2,7 @@ using System.Linq.Expressions;
 using Core.Libraries.Domain.Entities;
 
 
-namespace Core.LibrariesDomain.Services.Repositories;
+namespace Core.Libraries.Domain.Services.Repositories;
 
 /// <summary>
 /// Interface for a generic repository that manages operations for entities.
@@ -26,7 +26,7 @@ public interface IRepository<TEntity, TKey>
     /// <remarks>
     /// This method throws if the entity is not found. Use <c>FindAsync</c> to return <c>null</c> instead.
     /// </remarks>
-    Task<TEntity> GetAsync(TKey id);
+    Task<TEntity> GetAsync(TKey id, CancellationToken cancellationToken);
 
     /// <summary>
     /// Retrieves an entity using its globally unique alternate key.
@@ -41,7 +41,7 @@ public interface IRepository<TEntity, TKey>
     /// <remarks>
     /// This is useful when referencing entities via external systems or APIs using a GUID-based key.
     /// </remarks>
-    Task<TEntity> GetAsync(AlternateKey alternateKey);
+    Task<TEntity> GetAsync(AlternateKey alternateKey, CancellationToken cancellationToken);
 
     /// <summary>
     /// Retrieves an entity by its primary key including related navigation properties.
@@ -59,7 +59,7 @@ public interface IRepository<TEntity, TKey>
     /// var order = await repository.GetAsync(orderId, x => x.Items, x => x.Customer);
     /// </code>
     /// </example>
-    Task<TEntity> GetAsync(TKey id, params Expression<Func<TEntity, object?>>[] propertySelectors);
+    Task<TEntity> GetAsync(TKey id, CancellationToken cancellationToken, params Expression<Func<TEntity, object?>>[] propertySelectors);
 
     /// <summary>
     /// Retrieves an entity by its alternate key including related navigation properties.
@@ -75,7 +75,7 @@ public interface IRepository<TEntity, TKey>
     /// <remarks>
     /// Use this overload when eager loading specific relationships is required for external lookups.
     /// </remarks>
-    Task<TEntity> GetAsync(AlternateKey alternateKey, params Expression<Func<TEntity, object?>>[] propertySelectors);
+    Task<TEntity> GetAsync(AlternateKey alternateKey, CancellationToken cancellationToken, params Expression<Func<TEntity, object?>>[] propertySelectors);
 
 
     /// <summary>
@@ -99,7 +99,7 @@ public interface IRepository<TEntity, TKey>
     /// }
     /// </code>
     /// </example>
-    Task<TEntity?> FindAsync(TKey id);
+    Task<TEntity?> FindAsync(TKey id, CancellationToken cancellationToken);
 
     /// <summary>
     /// Asynchronously searches for an entity using an alternate key (external/global identifier).
@@ -117,7 +117,7 @@ public interface IRepository<TEntity, TKey>
     /// var entity = await repository.FindAsync(new AlternateKey(externalGuid));
     /// </code>
     /// </example>
-    Task<TEntity?> FindAsync(AlternateKey alternateKey);
+    Task<TEntity?> FindAsync(AlternateKey alternateKey, CancellationToken cancellationToken);
 
     /// <summary>
     /// Asynchronously searches for an entity using its primary key, including related navigation properties.
@@ -133,7 +133,7 @@ public interface IRepository<TEntity, TKey>
     /// var entity = await repository.FindAsync(id, e => e.RelatedEntity, e => e.Metadata);
     /// </code>
     /// </example>
-    Task<TEntity?> FindAsync(TKey id, params Expression<Func<TEntity, object?>>[] propertySelectors);
+    Task<TEntity?> FindAsync(TKey id, CancellationToken cancellationToken, params Expression<Func<TEntity, object?>>[] propertySelectors);
 
     /// <summary>
     /// Asynchronously searches for an entity using an alternate key, including related navigation properties.
@@ -152,7 +152,7 @@ public interface IRepository<TEntity, TKey>
     /// var entity = await repository.FindAsync(_alternateKey, e => e.Tags, e => e.AuditTrail);
     /// </code>
     /// </example>
-    Task<TEntity?> FindAsync(AlternateKey alternateKey, params Expression<Func<TEntity, object?>>[] propertySelectors);
+    Task<TEntity?> FindAsync(AlternateKey alternateKey, CancellationToken cancellationToken, params Expression<Func<TEntity, object?>>[] propertySelectors);
 
 
     /// <summary>
@@ -167,7 +167,7 @@ public interface IRepository<TEntity, TKey>
     /// var allEntities = await repository.SearchAsync();
     /// </code>
     /// </example>
-    Task<IEnumerable<TEntity>> SearchAsync(Expression<Func<TEntity, object>> orderBy);
+    Task<IEnumerable<TEntity>> SearchAsync(Expression<Func<TEntity, object>> orderBy, CancellationToken cancellationToken);
 
     /// <summary>
     /// Asynchronously retrieves all entities that match the specified filter.
@@ -182,7 +182,7 @@ public interface IRepository<TEntity, TKey>
     /// var filtered = await repository.SearchAsync(e => e.IsActive);
     /// </code>
     /// </example>
-    Task<IEnumerable<TEntity>> SearchAsync(Expression<Func<TEntity, object>> orderBy, Expression<Func<TEntity, bool>> predicate);
+    Task<IEnumerable<TEntity>> SearchAsync(Expression<Func<TEntity, object>> orderBy, Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken);
 
     /// <summary>
     /// Asynchronously retrieves a paginated list of entities that match the specified filter.
@@ -198,7 +198,7 @@ public interface IRepository<TEntity, TKey>
     /// var paged = await repository.SearchAsync(e => e.Type == "internal", new PaginationOptions(2, 20));
     /// </code>
     /// </example>
-    Task<IEnumerable<TEntity>> SearchAsync(Expression<Func<TEntity, object>> orderBy, Expression<Func<TEntity, bool>> predicate, PaginationOptions pagination);
+    Task<IEnumerable<TEntity>> SearchAsync(Expression<Func<TEntity, object>> orderBy, Expression<Func<TEntity, bool>> predicate, PaginationOptions pagination, CancellationToken cancellationToken);
 
     /// <summary>
     /// Asynchronously retrieves a paginated list of entities that match the specified filter and includes related navigation properties.
@@ -218,7 +218,7 @@ public interface IRepository<TEntity, TKey>
     /// var pagedWithDetails = await repository.SearchAsync(e => e.Status == Status.Active, new PaginationOptions(1, 10), e => e.Profile, e => e.Logs);
     /// </code>
     /// </example>
-    Task<IEnumerable<TEntity>> SearchAsync(Expression<Func<TEntity, object>> orderBy, Expression<Func<TEntity, bool>> predicate, PaginationOptions pagination, params Expression<Func<TEntity, object?>>[] propertySelectors);
+    Task<IEnumerable<TEntity>> SearchAsync(Expression<Func<TEntity, object>> orderBy, Expression<Func<TEntity, bool>> predicate, PaginationOptions pagination, CancellationToken cancellationToken, params Expression<Func<TEntity, object?>>[] propertySelectors);
 
     /// <summary>
     /// Asynchronously retrieves all entities that match the specified filter and includes related navigation properties.
@@ -251,7 +251,7 @@ public interface IRepository<TEntity, TKey>
     /// await repository.InsertAsync(new Customer("Alice"));
     /// </code>
     /// </example>
-    Task InsertAsync(TEntity entity);
+    Task InsertAsync(TEntity entity, CancellationToken cancellationToken);
 
     /// <summary>
     /// Asynchronously inserts multiple new entities into the repository.
@@ -266,7 +266,7 @@ public interface IRepository<TEntity, TKey>
     /// await repository.InsertAsync(new[] { new Product("P1"), new Product("P2") });
     /// </code>
     /// </example>
-    Task InsertAsync(IEnumerable<TEntity> entities);
+    Task InsertAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken);
 
     /// <summary>
     /// Asynchronously updates an existing entity in the repository.
@@ -283,7 +283,7 @@ public interface IRepository<TEntity, TKey>
     /// await repository.UpdateAsync(customer);
     /// </code>
     /// </example>
-    Task UpdateAsync(TEntity entity);
+    Task UpdateAsync(TEntity entity, CancellationToken cancellationToken);
 
     /// <summary>
     /// Asynchronously updates a collection of entities in the repository.
@@ -300,7 +300,7 @@ public interface IRepository<TEntity, TKey>
     /// await repository.UpdateAsync(orders);
     /// </code>
     /// </example>
-    Task UpdateAsync(IEnumerable<TEntity> entities);
+    Task UpdateAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken);
 
     /// <summary>
     /// Asynchronously marks an entity for deletion from the repository.
@@ -315,7 +315,7 @@ public interface IRepository<TEntity, TKey>
     /// await repository.DeleteAsync(order);
     /// </code>
     /// </example>
-    Task DeleteAsync(TEntity entity);
+    Task DeleteAsync(TEntity entity, CancellationToken cancellationToken);
 
     /// <summary>
     /// Asynchronously marks multiple entities for deletion from the repository.
@@ -330,7 +330,7 @@ public interface IRepository<TEntity, TKey>
     /// await repository.DeleteAsync(expiredSessions);
     /// </code>
     /// </example>
-    Task DeleteAsync(IEnumerable<TEntity> entities);
+    Task DeleteAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken);
 
 
     /// <summary>
@@ -348,7 +348,7 @@ public interface IRepository<TEntity, TKey>
     /// bool exists = await repository.ExistsAsync(new CustomerId(123));
     /// </code>
     /// </example>
-    Task<bool> ExistsAsync(TKey id);
+    Task<bool> ExistsAsync(TKey id, CancellationToken cancellationToken);
 
     /// <summary>
     /// Asynchronously checks whether an entity with the specified alternate key exists in the repository.
@@ -365,7 +365,7 @@ public interface IRepository<TEntity, TKey>
     /// bool exists = await repository.ExistsAsync(new AlternateKey(Guid.Parse("fc7b...")));
     /// </code>
     /// </example>
-    Task<bool> ExistsAsync(AlternateKey alternateKey);
+    Task<bool> ExistsAsync(AlternateKey alternateKey, CancellationToken cancellationToken);
 
     /// <summary>
     /// Asynchronously checks whether any entity matches the specified predicate.
@@ -382,7 +382,7 @@ public interface IRepository<TEntity, TKey>
     /// bool emailExists = await repository.ExistsAsync(u => u.Email == "user@domain.com");
     /// </code>
     /// </example>
-    Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate);
+    Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken);
 
     /// <summary>
     /// Asynchronously counts the number of entities in the repository that satisfy the given condition.
@@ -405,7 +405,7 @@ public interface IRepository<TEntity, TKey>
     /// </example>
     /// <seealso cref="SearchAsync"/>
     /// <seealso cref="ExistsAsync(Expression{Func{TEntity, bool}})"/>
-    Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate);
+    Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken);
 
 
     /// <summary>

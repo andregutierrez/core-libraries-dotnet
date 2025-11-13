@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Core.Libraries.Domain.Entities;
 using Core.Libraries.Domain.Entities.Identifiers;
-using Core.LibrariesInfra.Data.Postgress.Repositories;
 using People.Domain.Addresses.Entities;
 using People.Domain.Addresses.Services.Repositories;
 using People.Domain.Persons.Services.Repositories;
@@ -11,6 +10,7 @@ using People.Domain.Persons.Entities;
 using People.Application.Services.Repositories;
 using People.Application.DTOs;
 using People.Infra.Data.Context;
+using Core.Libraries.Infra.Data.Repositories;
 
 namespace People.Infra.Data.Repositories;
 
@@ -40,16 +40,16 @@ public class AddressRepository : Repository<Address, EntityId>, IAddressReposito
                             join street in _peopleDbContext.Localities.OfType<LocalityStreet>() on address.StreetId.Value equals street.Id.Value
                             join city in _peopleDbContext.Localities.OfType<LocalityCity>() on address.CityId.Value equals city.Id.Value
                             from neighborhood in _peopleDbContext.Localities.OfType<LocalityNeighborhood>()
-                                .Where(n => address.NeighborhoodId.HasValue && n.Id.Value == address.NeighborhoodId.Value.Value)
+                                .Where(n => address.NeighborhoodId != null && n.Id.Value == address.NeighborhoodId.Value)
                                 .DefaultIfEmpty()
                             from state in _peopleDbContext.Localities.OfType<LocalityState>()
-                                .Where(s => address.StateId.HasValue && s.Id.Value == address.StateId.Value.Value)
+                                .Where(s => address.StateId != null && s.Id.Value == address.StateId.Value)
                                 .DefaultIfEmpty()
                             from country in _peopleDbContext.Localities.OfType<LocalityCountry>()
-                                .Where(c => address.CountryId.HasValue && c.Id.Value == address.CountryId.Value.Value)
+                                .Where(c => address.CountryId != null && c.Id.Value == address.CountryId.Value)
                                 .DefaultIfEmpty()
                             from postalCode in _peopleDbContext.Localities
-                                .Where(pc => address.PostalCodeId.HasValue && pc.Id.Value == address.PostalCodeId.Value.Value)
+                                .Where(pc => address.PostalCodeId != null && pc.Id.Value == address.PostalCodeId.Value)
                                 .DefaultIfEmpty()
                             where address.Key.Value == addressKey
                             select new
@@ -122,16 +122,16 @@ public class AddressRepository : Repository<Address, EntityId>, IAddressReposito
                             join street in _peopleDbContext.Localities.OfType<LocalityStreet>() on address.StreetId.Value equals street.Id.Value
                             join city in _peopleDbContext.Localities.OfType<LocalityCity>() on address.CityId.Value equals city.Id.Value
                             from neighborhood in _peopleDbContext.Localities.OfType<LocalityNeighborhood>()
-                                .Where(n => address.NeighborhoodId.HasValue && n.Id.Value == address.NeighborhoodId.Value.Value)
+                                .Where(n => address.NeighborhoodId != null && n.Id.Value == address.NeighborhoodId.Value)
                                 .DefaultIfEmpty()
                             from state in _peopleDbContext.Localities.OfType<LocalityState>()
-                                .Where(s => address.StateId.HasValue && s.Id.Value == address.StateId.Value.Value)
+                                .Where(s => address.StateId != null && s.Id.Value == address.StateId.Value)
                                 .DefaultIfEmpty()
                             from country in _peopleDbContext.Localities.OfType<LocalityCountry>()
-                                .Where(c => address.CountryId.HasValue && c.Id.Value == address.CountryId.Value.Value)
+                                .Where(c => address.CountryId != null && c.Id.Value == address.CountryId.Value)
                                 .DefaultIfEmpty()
                             from postalCode in _peopleDbContext.Localities
-                                .Where(pc => address.PostalCodeId.HasValue && pc.Id.Value == address.PostalCodeId.Value.Value)
+                                .Where(pc => address.PostalCodeId != null && pc.Id.Value == address.PostalCodeId.Value)
                                 .DefaultIfEmpty()
                             where person.Key.Value == personKey
                             select new
@@ -201,16 +201,16 @@ public class AddressRepository : Repository<Address, EntityId>, IAddressReposito
                             join street in _peopleDbContext.Localities.OfType<LocalityStreet>() on address.StreetId.Value equals street.Id.Value
                             join city in _peopleDbContext.Localities.OfType<LocalityCity>() on address.CityId.Value equals city.Id.Value
                             from neighborhood in _peopleDbContext.Localities.OfType<LocalityNeighborhood>()
-                                .Where(n => address.NeighborhoodId.HasValue && n.Id.Value == address.NeighborhoodId.Value.Value)
+                                .Where(n => address.NeighborhoodId != null && n.Id.Value == address.NeighborhoodId.Value)
                                 .DefaultIfEmpty()
                             from state in _peopleDbContext.Localities.OfType<LocalityState>()
-                                .Where(s => address.StateId.HasValue && s.Id.Value == address.StateId.Value.Value)
+                                .Where(s => address.StateId != null && s.Id.Value == address.StateId.Value)
                                 .DefaultIfEmpty()
                             from country in _peopleDbContext.Localities.OfType<LocalityCountry>()
-                                .Where(c => address.CountryId.HasValue && c.Id.Value == address.CountryId.Value.Value)
+                                .Where(c => address.CountryId != null && c.Id.Value == address.CountryId.Value)
                                 .DefaultIfEmpty()
                             from postalCode in _peopleDbContext.Localities
-                                .Where(pc => address.PostalCodeId.HasValue && pc.Id.Value == address.PostalCodeId.Value.Value)
+                                .Where(pc => address.PostalCodeId != null && pc.Id.Value == address.PostalCodeId.Value)
                                 .DefaultIfEmpty()
                             where person.Key.Value == personKey && address.IsPrimary
                             select new
@@ -292,10 +292,10 @@ public class AddressRepository : Repository<Address, EntityId>, IAddressReposito
                         join person in _peopleDbContext.Persons on address.PersonId.Value equals person.Id.Value
                         join city in _peopleDbContext.Localities.OfType<LocalityCity>() on address.CityId.Value equals city.Id.Value
                         from state in _peopleDbContext.Localities.OfType<LocalityState>()
-                            .Where(s => address.StateId.HasValue && s.Id.Value == address.StateId.Value.Value)
+                            .Where(s => address.StateId != null && s.Id.Value == address.StateId.Value)
                             .DefaultIfEmpty()
                         from country in _peopleDbContext.Localities.OfType<LocalityCountry>()
-                            .Where(c => address.CountryId.HasValue && c.Id.Value == address.CountryId.Value.Value)
+                            .Where(c => address.CountryId != null && c.Id.Value == address.CountryId.Value)
                             .DefaultIfEmpty()
                         select new
                         {

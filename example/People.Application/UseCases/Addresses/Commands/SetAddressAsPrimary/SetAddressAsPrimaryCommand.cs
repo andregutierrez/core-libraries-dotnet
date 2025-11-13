@@ -1,4 +1,4 @@
-namespace People.Application.UseCases.Addresses.Commands;
+namespace People.Application.UseCases.Addresses.Commands.SetAddressAsPrimary;
 
 using Core.Libraries.Application.Commands;
 

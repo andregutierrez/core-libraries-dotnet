@@ -1,6 +1,6 @@
-namespace People.Application.UseCases.Contacts.Commands;
+namespace People.Application.UseCases.Contacts.Commands.CreateEmailContact;
 
-using Core.LibrariesApplication.Commands;
+using Core.Libraries.Application.Commands;
 
 /// <summary>
 /// Command to create a new email contact for a person.

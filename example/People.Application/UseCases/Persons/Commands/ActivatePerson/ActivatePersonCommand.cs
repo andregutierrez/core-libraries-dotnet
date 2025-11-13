@@ -1,6 +1,6 @@
-namespace People.Application.UseCases.Persons.Commands;
+namespace People.Application.UseCases.Persons.Commands.ActivatePerson;
 
-using Core.LibrariesApplication.Commands;
+using Core.Libraries.Application.Commands;
 
 /// <summary>
 /// Command to activate a person (sets status to Active).

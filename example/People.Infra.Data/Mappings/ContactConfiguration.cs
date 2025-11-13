@@ -1,8 +1,8 @@
+using Core.Libraries.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using People.Domain.Contacts.Entities;
 using People.Domain.Contacts.ValueObjects;
-using Core.Libraries.Domain.Entities.Identifiers;
 
 namespace People.Infra.Data.Mappings;
 
@@ -40,7 +40,7 @@ public class ContactConfiguration : IEntityTypeConfiguration<Contact>
         builder.Property(c => c.Type)
             .HasConversion(
                 t => t.Code,
-                c => ContactType.FromCode(c) ?? throw new InvalidOperationException($"Invalid ContactType code: {c}"))
+                c => ContactType.FromCode(c) ?? ContactType.Phone)
             .HasColumnName("ContactTypeCode")
             .IsRequired();
 
@@ -59,51 +59,51 @@ public class ContactConfiguration : IEntityTypeConfiguration<Contact>
             .HasMaxLength(500)
             .HasColumnName("Notes");
 
-        // EmailContact specific properties
-        builder.Entity<EmailContact>()
-            .OwnsOne(e => e.Email, email =>
-            {
-                email.Property(e => e.Value)
-                    .HasColumnName("Email")
-                    .HasMaxLength(255)
-                    .IsRequired();
-            });
+        //// EmailContact specific properties
+        //builder.Entity<EmailContact>()
+        //    .OwnsOne(e => e.Email, email =>
+        //    {
+        //        email.Property(e => e.Value)
+        //            .HasColumnName("Email")
+        //            .HasMaxLength(255)
+        //            .IsRequired();
+        //    });
 
-        // PhoneContact specific properties
-        builder.Entity<PhoneContact>()
-            .OwnsOne(p => p.Phone, phone =>
-            {
-                phone.Property(p => p.Value)
-                    .HasColumnName("PhoneNumber")
-                    .HasMaxLength(20)
-                    .IsRequired();
+        //// PhoneContact specific properties
+        //builder.Entity<PhoneContact>()
+        //    .OwnsOne(p => p.Phone, phone =>
+        //    {
+        //        phone.Property(p => p.Value)
+        //            .HasColumnName("PhoneNumber")
+        //            .HasMaxLength(20)
+        //            .IsRequired();
 
-                phone.Property(p => p.Formatted)
-                    .HasColumnName("PhoneFormatted")
-                    .HasMaxLength(50)
-                    .IsRequired();
-            });
+        //        phone.Property(p => p.Formatted)
+        //            .HasColumnName("PhoneFormatted")
+        //            .HasMaxLength(50)
+        //            .IsRequired();
+        //    });
 
-        // SocialMediaContact specific properties
-        builder.Entity<SocialMediaContact>()
-            .OwnsOne(s => s.SocialMedia, social =>
-            {
-                social.Property(s => s.Platform)
-                    .HasConversion(
-                        p => p.Code,
-                        c => SocialMediaPlatform.FromCode(c) ?? throw new InvalidOperationException($"Invalid SocialMediaPlatform code: {c}"))
-                    .HasColumnName("SocialMediaPlatformCode")
-                    .IsRequired();
+        //// SocialMediaContact specific properties
+        //builder.Entity<SocialMediaContact>()
+        //    .OwnsOne(s => s.SocialMedia, social =>
+        //    {
+        //        social.Property(s => s.Platform)
+        //            .HasConversion(
+        //                p => p.Code,
+        //                c => SocialMediaPlatform.FromCode(c) ?? throw new InvalidOperationException($"Invalid SocialMediaPlatform code: {c}"))
+        //            .HasColumnName("SocialMediaPlatformCode")
+        //            .IsRequired();
 
-                social.Property(s => s.Username)
-                    .HasColumnName("SocialMediaUsername")
-                    .HasMaxLength(100)
-                    .IsRequired();
+        //        social.Property(s => s.Username)
+        //            .HasColumnName("SocialMediaUsername")
+        //            .HasMaxLength(100)
+        //            .IsRequired();
 
-                social.Property(s => s.ProfileUrl)
-                    .HasColumnName("SocialMediaProfileUrl")
-                    .HasMaxLength(500);
-            });
+        //        social.Property(s => s.ProfileUrl)
+        //            .HasColumnName("SocialMediaProfileUrl")
+        //            .HasMaxLength(500);
+        //    });
 
         // Indexes
         builder.HasIndex(c => c.Key.Value)

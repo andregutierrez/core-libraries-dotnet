@@ -1,4 +1,4 @@
-namespace Core.LibrariesDomain.Services.Repositories;
+namespace Core.Libraries.Domain.Services.Repositories;
 
 /// <summary>
 /// Value Object that encapsulates pagination settings using page-based semantics.

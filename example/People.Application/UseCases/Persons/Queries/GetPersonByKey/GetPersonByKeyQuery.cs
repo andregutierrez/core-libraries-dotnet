@@ -1,6 +1,6 @@
 namespace People.Application.UseCases.Persons.Queries.GetPersonByKey;
 
-using Core.LibrariesApplication.Queries;
+using Core.Libraries.Application.Queries;
 using People.Application.DTOs;
 
 /// <summary>

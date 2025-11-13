@@ -2,9 +2,9 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Core.Libraries.Domain.Entities.DomainEvents;
-using Core.LibrariesDomain.Services.DomainEvents;
+using Core.Libraries.Domain.Services.DomainEvents;
 
-namespace Core.LibrariesInfra.Data.Postgress.Context;
+namespace Core.Libraries.Infra.Data.Context;
 
 /// <summary>
 /// Provides a base Entity Framework Core <see cref="DbContext"/> implementation
@@ -112,7 +112,7 @@ public abstract class CoreDbContext : DbContext
 
         foreach (var localEvent in localEvents)
         {
-            if (localEvent.EventData is MediatR.INotification notification)
+            if (localEvent.EventData is INotification notification)
             {
                 await _mediator.Publish(notification);
             }

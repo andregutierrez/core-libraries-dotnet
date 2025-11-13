@@ -2,8 +2,7 @@ namespace People.Application.UseCases.Addresses.Commands.DeleteAddress;
 
 using Core.Libraries.Application.Commands;
 using Core.Libraries.Domain.Entities;
-using Core.Libraries.Domain.Entities.Identifiers;
-using Core.LibrariesDomain.Services.Repositories;
+using Core.Libraries.Domain.Services.Repositories;
 using People.Domain.Addresses.Services.Repositories;
 
 /// <summary>
@@ -39,8 +38,7 @@ public class DeleteAddressCommandHandler : ICommandHandler<DeleteAddressCommand>
     {
         // Resolve AddressKey to Address entity using GetAsync
         var address = await _addressRepository.GetAsync(
-            new AlternateKey(request.AddressKey),
-            cancellationToken);
+            new AlternateKey(request.AddressKey), cancellationToken);
 
         // Delete the address
         await _addressRepository.DeleteAsync(address, cancellationToken);

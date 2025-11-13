@@ -1,11 +1,11 @@
-namespace People.Application.UseCases.Contacts.Commands;
+namespace People.Application.UseCases.Contacts.Commands.UpdateContactNotes;
 
 using Core.Libraries.Application.Commands;
 
 /// <summary>
 /// Command to update the notes for a contact.
 /// </summary>
-public class UpdateContactNotesCommand : BaseCommand
+public record UpdateContactNotesCommand : BaseCommand
 {
     /// <summary>
     /// Gets the contact's alternate key.

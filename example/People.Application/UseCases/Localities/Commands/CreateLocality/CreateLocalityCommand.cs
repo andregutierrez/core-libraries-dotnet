@@ -1,6 +1,6 @@
-namespace People.Application.UseCases.Localities.Commands;
+namespace People.Application.UseCases.Localities.Commands.CreateLocality;
 
-using Core.LibrariesApplication.Commands;
+using Core.Libraries.Application.Commands;
 
 /// <summary>
 /// Command to create a new locality cache entry.

@@ -1,4 +1,4 @@
-namespace People.Domain.Persons.Statuses;
+namespace People.Domain.Persons.Entities.Statuses;
 
 /// <summary>
 /// Represents the possible status types for a person.

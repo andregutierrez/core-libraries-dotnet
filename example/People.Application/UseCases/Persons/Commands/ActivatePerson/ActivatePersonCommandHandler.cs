@@ -1,10 +1,11 @@
 namespace People.Application.UseCases.Persons.Commands.ActivatePerson;
 
-using Core.LibrariesApplication.Commands;
 using Core.Libraries.Domain.Entities.Identifiers;
 using Core.Libraries.Domain.Exceptions;
-using Core.LibrariesDomain.Services.Repositories;
 using People.Domain.Persons.Services.Repositories;
+using Core.Libraries.Application.Commands;
+using Core.Libraries.Domain.Services.Repositories;
+using Core.Libraries.Domain.Entities;
 
 /// <summary>
 /// Handler for the ActivatePersonCommand.

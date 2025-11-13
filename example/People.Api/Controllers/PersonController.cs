@@ -1,6 +1,16 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using People.Application.UseCases.Persons.Commands;
+using People.Application.UseCases.Persons.Commands.ActivatePerson;
+using People.Application.UseCases.Persons.Commands.AddPersonIdentifier;
+using People.Application.UseCases.Persons.Commands.ChangePersonStatus;
+using People.Application.UseCases.Persons.Commands.CreatePerson;
+using People.Application.UseCases.Persons.Commands.DeactivatePerson;
+using People.Application.UseCases.Persons.Commands.ImportPerson;
+using People.Application.UseCases.Persons.Commands.MarkPersonAsMerged;
+using People.Application.UseCases.Persons.Commands.RemovePersonIdentifier;
+using People.Application.UseCases.Persons.Commands.UpdatePersonBirthDate;
+using People.Application.UseCases.Persons.Commands.UpdatePersonGender;
+using People.Application.UseCases.Persons.Commands.UpdatePersonName;
 using People.Application.UseCases.Persons.Queries.GetPersonByKey;
 using People.Application.UseCases.Persons.Queries.SearchPersons;
 

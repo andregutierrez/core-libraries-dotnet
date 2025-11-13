@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Core.Libraries.Domain.Entities;
 using Core.Libraries.Domain.Entities.Identifiers;
-using Core.LibrariesInfra.Data.Postgress.Repositories;
 using People.Domain.Localities.Entities;
 using People.Domain.Localities.Services.Repositories;
 using People.Application.Services.Repositories;
 using People.Application.DTOs;
 using People.Infra.Data.Context;
+using Core.Libraries.Infra.Data.Repositories;
 
 namespace People.Infra.Data.Repositories;
 
@@ -75,12 +75,12 @@ public class LocalityRepository : Repository<Locality, EntityId>, ILocalityRepos
         if (!string.IsNullOrWhiteSpace(name))
         {
             // Search in Name property of derived types using pattern matching
-            baseQuery = baseQuery.Where(l =>
-                (l is LocalityCity city && city.Name.Contains(name)) ||
-                (l is LocalityCountry country && country.Name.Contains(name)) ||
-                (l is LocalityState state && state.Name.Contains(name)) ||
-                (l is LocalityNeighborhood neighborhood && neighborhood.Name.Contains(name)) ||
-                (l is LocalityStreet street && street.Name.Contains(name)));
+            //baseQuery = baseQuery.Where(l =>
+            //    (l is LocalityCity city && city.Name.Contains(name)) ||
+            //    (l is LocalityCountry country && country.Name.Contains(name)) ||
+            //    (l is LocalityState state && state.Name.Contains(name)) ||
+            //    (l is LocalityNeighborhood neighborhood && neighborhood.Name.Contains(name)) ||
+            //    (l is LocalityStreet street && street.Name.Contains(name)));
         }
 
         if (localityTypeCode.HasValue)

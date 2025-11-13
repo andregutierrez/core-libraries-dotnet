@@ -1,8 +1,8 @@
 using FluentValidation;
 using MediatR;
-using Core.LibrariesDomain.Notifications;
+using Core.Libraries.Domain.Notifications;
 
-namespace Core.LibrariesApplication.Pipelines;
+namespace Core.Libraries.Application.Pipelines;
 
 /// <summary>
 /// Defines a validation behavior for MediatR requests that do not return a value (void/Unit).

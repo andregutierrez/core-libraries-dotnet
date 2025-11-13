@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Core.LibrariesApplication.Queries;
+namespace Core.Libraries.Application.Queries;
 
 /// <summary>
 /// Represents a query that retrieves data without modifying application state.

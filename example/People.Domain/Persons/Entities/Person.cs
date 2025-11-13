@@ -2,10 +2,9 @@ namespace People.Domain.Persons.Entities;
 
 using Core.Libraries.Domain.Entities;
 using Core.Libraries.Domain.Entities.Identifiers;
-using Core.Libraries.Domain.Entities.Statuses;
+using People.Domain.Persons.Entities.Identifiers;
+using People.Domain.Persons.Entities.Statuses;
 using People.Domain.Persons.Events;
-using People.Domain.Persons.Identifiers;
-using People.Domain.Persons.Statuses;
 using People.Domain.Persons.ValueObjects;
 
 /// <summary>

@@ -1,4 +1,4 @@
-﻿namespace Core.LibrariesApplication.DTOs;
+namespace Core.Libraries.Application.DTOs;
 
 /// <summary>
 /// Represents a basic status model with an activation flag.

@@ -8,25 +8,32 @@
     "net9.0": []
   },
   "packageFolders": {
-    "/home/techleap/.nuget/packages/": {}
+    "C:\\Users\\Corporativo\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/techleap/Projects/repository/core-libraries-dotnet/src/Core.Libraries.Infra.EventStreaming/Core.Libraries.Infra.EventStreaming.csproj",
+      "projectUniqueName": "D:\\Repository\\Git\\andregutierrez\\core-libraries-dotnet\\src\\Core.Libraries.Infra.EventStreaming\\Core.Libraries.Infra.EventStreaming.csproj",
       "projectName": "Core.Libraries.Infra.EventStreaming",
-      "projectPath": "/home/techleap/Projects/repository/core-libraries-dotnet/src/Core.Libraries.Infra.EventStreaming/Core.Libraries.Infra.EventStreaming.csproj",
-      "packagesPath": "/home/techleap/.nuget/packages/",
-      "outputPath": "/home/techleap/Projects/repository/core-libraries-dotnet/src/Core.Libraries.Infra.EventStreaming/obj/",
+      "projectPath": "D:\\Repository\\Git\\andregutierrez\\core-libraries-dotnet\\src\\Core.Libraries.Infra.EventStreaming\\Core.Libraries.Infra.EventStreaming.csproj",
+      "packagesPath": "C:\\Users\\Corporativo\\.nuget\\packages\\",
+      "outputPath": "D:\\Repository\\Git\\andregutierrez\\core-libraries-dotnet\\src\\Core.Libraries.Infra.EventStreaming\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/home/techleap/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Corporativo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
-        "/usr/lib/dotnet/library-packs": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://alm-animaeducacao.pkgs.visualstudio.com/_packaging/animacore/nuget/v3/index.json": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -45,7 +52,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -66,7 +73,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/9.0.111/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

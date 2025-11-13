@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Core.LibrariesApplication.Queries;
+namespace Core.Libraries.Application.Queries;
 
 /// <summary>
 /// Represents a handler for a query that returns a response.

@@ -1,7 +1,7 @@
 using MediatR;
 using System.Text.Json.Serialization;
 
-namespace Core.LibrariesApplication.Commands;
+namespace Core.Libraries.Application.Commands;
 
 /// <summary>
 /// Represents a command that does not return a result upon execution.

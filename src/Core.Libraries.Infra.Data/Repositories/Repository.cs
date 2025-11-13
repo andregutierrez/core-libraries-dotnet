@@ -3,9 +3,9 @@ using System.Linq.Expressions;
 using Core.Libraries.Domain.Entities;
 using Core.Libraries.Domain.Entities.Lifecycle;
 using Core.Libraries.Domain.Exceptions;
-using Core.LibrariesDomain.Services.Repositories;
+using Core.Libraries.Domain.Services.Repositories;
 
-namespace Core.LibrariesInfra.Data.Postgress.Repositories;
+namespace Core.Libraries.Infra.Data.Repositories;
 
 public class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
     where TKey : IEntityId
@@ -20,12 +20,12 @@ public class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
 
     protected DbContext Context => _dbContext;
 
-    public async Task<TEntity?> FindAsync(TKey id, params Expression<Func<TEntity, object?>>[] propertySelectors)
+    public async Task<TEntity?> FindAsync(TKey id, CancellationToken cancellationToken, params Expression<Func<TEntity, object?>>[] propertySelectors)
         => await WithDetails(propertySelectors)
             .Where(o => o.Id.Equals(id))
             .SingleOrDefaultAsync();
 
-    public async Task<TEntity?> FindAsync(Guid alternateKey, params Expression<Func<TEntity, object?>>[] propertySelectors)
+    public async Task<TEntity?> FindAsync(Guid alternateKey, CancellationToken cancellationToken, params Expression<Func<TEntity, object?>>[] propertySelectors)
     {
         if (typeof(IHasAlternateKey).IsAssignableFrom(typeof(TEntity)))
         {
@@ -38,7 +38,7 @@ public class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
     }
 
 
-    public async Task<TEntity?> FindAsync(Expression<Func<TEntity, bool>> predicate)
+    public async Task<TEntity?> FindAsync(CancellationToken cancellationToken, Expression<Func<TEntity, bool>> predicate)
         => await _dbContext
             .Set<TEntity>()
             .Where(predicate)
@@ -52,15 +52,15 @@ public class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
         .ApplySoftDeleteFilter()
         .SingleOrDefaultAsync();
 
-    public async Task<TEntity> GetAsync(TKey id, params Expression<Func<TEntity, object?>>[] propertySelectors)
-        => await FindAsync(id, propertySelectors)
+    public async Task<TEntity> GetAsync(TKey id, CancellationToken cancellationToken, params Expression<Func<TEntity, object?>>[] propertySelectors)
+        => await FindAsync(id, cancellationToken, propertySelectors)
             ?? throw new EntityNotFoundException(typeof(TEntity).Name, new { id });
 
-    public async Task<TEntity> GetAsync(Guid key, params Expression<Func<TEntity, object?>>[] propertySelectors)
+    public async Task<TEntity> GetAsync(Guid key, CancellationToken cancellationToken, params Expression<Func<TEntity, object?>>[] propertySelectors)
         => await FindAsync(key, propertySelectors)
             ?? throw new EntityNotFoundException(typeof(TEntity).Name, new { key });
 
-    public async Task<TKey> GetIdAsync(Guid alternateKey)
+    public async Task<TKey> GetIdAsync(CancellationToken cancellationToken, Guid alternateKey)
     {
         if (!typeof(IHasAlternateKey).IsAssignableFrom(typeof(TEntity)))
             throw new InvalidOperationException($"Entity type {typeof(TEntity).Name} does not implement IHasAlternateKey.");
@@ -73,8 +73,8 @@ public class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
             .SingleAsync();
     }
 
-    public virtual async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate, bool includeDetails = true)
-        => await FindAsync(predicate)
+    public virtual async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken, bool includeDetails = true)
+        => await FindAsync(cancellationToken, predicate)
             ?? throw new EntityNotFoundException(typeof(TEntity).Name, new { predicate });
 
     public virtual async Task<TEntity> GetAsync(TKey id)
@@ -299,6 +299,106 @@ public class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
     }
 
     public Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<TEntity> GetAsync(TKey id, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<TEntity> GetAsync(AlternateKey alternateKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<TEntity> GetAsync(AlternateKey alternateKey, CancellationToken cancellationToken, params Expression<Func<TEntity, object?>>[] propertySelectors)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<TEntity?> FindAsync(TKey id, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<TEntity?> FindAsync(AlternateKey alternateKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<TEntity?> FindAsync(AlternateKey alternateKey, CancellationToken cancellationToken, params Expression<Func<TEntity, object?>>[] propertySelectors)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<IEnumerable<TEntity>> SearchAsync(Expression<Func<TEntity, object>> orderBy, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<IEnumerable<TEntity>> SearchAsync(Expression<Func<TEntity, object>> orderBy, Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<IEnumerable<TEntity>> SearchAsync(Expression<Func<TEntity, object>> orderBy, Expression<Func<TEntity, bool>> predicate, PaginationOptions pagination, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<IEnumerable<TEntity>> SearchAsync(Expression<Func<TEntity, object>> orderBy, Expression<Func<TEntity, bool>> predicate, PaginationOptions pagination, CancellationToken cancellationToken, params Expression<Func<TEntity, object?>>[] propertySelectors)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task InsertAsync(TEntity entity, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task InsertAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task UpdateAsync(TEntity entity, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task UpdateAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task DeleteAsync(TEntity entity, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task DeleteAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<bool> ExistsAsync(TKey id, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<bool> ExistsAsync(AlternateKey alternateKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }

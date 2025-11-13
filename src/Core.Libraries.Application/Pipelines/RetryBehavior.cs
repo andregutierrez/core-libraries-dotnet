@@ -1,9 +1,9 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using Polly;
 using Polly.Retry;
 
-namespace Core.LibrariesApplication.Behavior;
+namespace Core.Libraries.Application.Pipelines;
 
 public class RetryBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : notnull

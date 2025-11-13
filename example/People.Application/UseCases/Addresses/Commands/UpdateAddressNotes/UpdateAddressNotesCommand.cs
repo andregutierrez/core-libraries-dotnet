@@ -1,11 +1,11 @@
-namespace People.Application.UseCases.Addresses.Commands;
+namespace People.Application.UseCases.Addresses.Commands.UpdateAddressNotes;
 
 using Core.Libraries.Application.Commands;
 
 /// <summary>
 /// Command to update the notes for an address.
 /// </summary>
-public class UpdateAddressNotesCommand : BaseCommand
+public record UpdateAddressNotesCommand : BaseCommand
 {
     /// <summary>
     /// Gets the address's alternate key.

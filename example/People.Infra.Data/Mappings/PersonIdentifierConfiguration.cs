@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using People.Domain.Persons.Identifiers;
 using Core.Libraries.Domain.Entities.Identifiers;
+using People.Domain.Persons.Entities.Identifiers;
+using Core.Libraries.Domain.Entities;
 
 namespace People.Infra.Data.Mappings;
 
@@ -35,7 +36,7 @@ public class PersonIdentifierConfiguration : IEntityTypeConfiguration<PersonIden
         builder.Property(i => i.Type)
             .HasConversion(
                 t => t.Code,
-                c => IdentifierType.FromCode(c) ?? throw new InvalidOperationException($"Invalid IdentifierType code: {c}"))
+                c => IdentifierType.FromCode(c) ?? IdentifierType.OpenAIPlatform)
             .HasColumnName("IdentifierTypeCode")
             .IsRequired();
 

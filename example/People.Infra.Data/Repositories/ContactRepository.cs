@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Core.Libraries.Domain.Entities;
 using Core.Libraries.Domain.Entities.Identifiers;
-using Core.LibrariesInfra.Data.Postgress.Repositories;
 using People.Domain.Contacts.Entities;
 using People.Domain.Contacts.Services.Repositories;
 using People.Domain.Persons.Entities;
 using People.Application.Services.Repositories;
 using People.Application.DTOs;
 using People.Infra.Data.Context;
+using Core.Libraries.Infra.Data.Repositories;
 
 namespace People.Infra.Data.Repositories;
 
@@ -202,41 +202,41 @@ public class ContactRepository : Repository<Contact, EntityId>, IContactReposito
         };
 
         // Map specific contact types
-        switch (contact)
-        {
-            case EmailContact emailContact:
-                dto = dto with
-                {
-                    Email = new EmailContactDto
-                    {
-                        Email = emailContact.Email.Value
-                    }
-                };
-                break;
+        //switch (contact)
+        //{
+        //    case EmailContact emailContact:
+        //        dto = dto with
+        //        {
+        //            Email = new EmailContactDto
+        //            {
+        //                Email = emailContact.Email.Value
+        //            }
+        //        };
+        //        break;
 
-            case PhoneContact phoneContact:
-                dto = dto with
-                {
-                    Phone = new PhoneContactDto
-                    {
-                        PhoneNumber = phoneContact.Phone.Value,
-                        CountryCode = phoneContact.Phone.Formatted // Using Formatted as fallback for CountryCode
-                    }
-                };
-                break;
+        //    case PhoneContact phoneContact:
+        //        dto = dto with
+        //        {
+        //            Phone = new PhoneContactDto
+        //            {
+        //                PhoneNumber = phoneContact.Phone.Value,
+        //                CountryCode = phoneContact.Phone.Formatted // Using Formatted as fallback for CountryCode
+        //            }
+        //        };
+        //        break;
 
-            case SocialMediaContact socialMediaContact:
-                dto = dto with
-                {
-                    SocialMedia = new SocialMediaContactDto
-                    {
-                        PlatformCode = socialMediaContact.SocialMedia.Platform.Code,
-                        Username = socialMediaContact.SocialMedia.Username,
-                        ProfileUrl = socialMediaContact.SocialMedia.ProfileUrl
-                    }
-                };
-                break;
-        }
+        //    case SocialMediaContact socialMediaContact:
+        //        dto = dto with
+        //        {
+        //            SocialMedia = new SocialMediaContactDto
+        //            {
+        //                PlatformCode = socialMediaContact.SocialMedia.Platform.Code,
+        //                Username = socialMediaContact.SocialMedia.Username,
+        //                ProfileUrl = socialMediaContact.SocialMedia.ProfileUrl
+        //            }
+        //        };
+        //        break;
+        //}
 
         return dto;
     }

@@ -1,11 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MediatR;
-using Core.LibrariesInfra.Data.Postgress.Context;
 using People.Domain.Addresses.Entities;
 using People.Domain.Contacts.Entities;
 using People.Domain.Localities.Entities;
 using People.Domain.Persons.Entities;
+using Core.Libraries.Infra.Data.Context;
 
 namespace People.Infra.Data.Context;
 

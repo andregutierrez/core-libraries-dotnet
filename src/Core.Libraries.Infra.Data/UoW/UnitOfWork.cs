@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using Core.LibrariesDomain.Services.Repositories;
+using Core.Libraries.Domain.Services.Repositories;
 
-namespace Core.LibrariesInfra.Data.Postgress.UoW;
+namespace Core.Libraries.Infra.Data.UoW;
 
 /// <summary>
 /// Implements the Unit of Work pattern using EF Core.

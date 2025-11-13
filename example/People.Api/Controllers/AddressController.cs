@@ -1,6 +1,14 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using People.Application.UseCases.Addresses.Commands;
+using People.Application.UseCases.Addresses.Commands.CreateAddress;
+using People.Application.UseCases.Addresses.Commands.DeleteAddress;
+using People.Application.UseCases.Addresses.Commands.ImportAddress;
+using People.Application.UseCases.Addresses.Commands.RemoveAddressAsPrimary;
+using People.Application.UseCases.Addresses.Commands.SetAddressAsPrimary;
+using People.Application.UseCases.Addresses.Commands.UpdateAddress;
+using People.Application.UseCases.Addresses.Commands.UpdateAddressNotes;
+using People.Application.UseCases.Addresses.Commands.UpdateAddressType;
 using People.Application.UseCases.Addresses.Queries.GetAddressByKey;
 using People.Application.UseCases.Addresses.Queries.GetAddressesByPersonKey;
 using People.Application.UseCases.Addresses.Queries.GetPrimaryAddressByPersonKey;

@@ -1,9 +1,12 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using People.Application.UseCases.Localities.Commands;
 using People.Application.UseCases.Localities.Queries.GetLocalityByKey;
 using People.Application.UseCases.Localities.Queries.GetLocalitiesByType;
 using People.Application.UseCases.Localities.Queries.SearchLocalities;
+using People.Application.UseCases.Localities.Commands.CreateLocality;
+using People.Application.UseCases.Localities.Commands.UpdateLocalityCache;
+using People.Application.UseCases.Localities.Commands.ImportLocality;
+using People.Application.UseCases.Localities.Commands.DeleteLocality;
 
 namespace People.Api.Controllers;
 

@@ -1,4 +1,4 @@
-namespace Core.LibrariesDomain.Services.Repositories;
+namespace Core.Libraries.Domain.Services.Repositories;
 
 public interface IUnitOfWork : IDisposable
 {

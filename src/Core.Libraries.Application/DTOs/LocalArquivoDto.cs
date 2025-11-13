@@ -1,4 +1,4 @@
-﻿namespace Core.LibrariesApplication.DTOs;
+namespace Core.Libraries.Application.DTOs;
 
 /// <summary>
 /// Represents a file location reference with its type information.

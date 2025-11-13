@@ -1,4 +1,4 @@
-﻿namespace Core.LibrariesApplication.DTOs;
+namespace Core.Libraries.Application.DTOs;
 
 /// <summary>
 /// Represents pagination parameters for querying paginated data.

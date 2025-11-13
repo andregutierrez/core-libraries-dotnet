@@ -1,4 +1,4 @@
-namespace Core.LibrariesApplication.Exceptions;
+namespace Core.Libraries.Application.Exceptions;
 
 /// <summary>
 /// Represents an exception that is thrown when a request conflicts with the current state of the application or resource.

@@ -59,22 +59,22 @@ public class GetAddressByKeyQueryHandler : IQueryHandler<GetAddressByKeyQuery, G
         var street = await _localityRepository.GetAsync(address.StreetId, cancellationToken) as LocalityStreet;
         var city = await _localityRepository.GetAsync(address.CityId, cancellationToken) as LocalityCity;
 
-        var neighborhood = address.NeighborhoodId.HasValue
-            ? await _localityRepository.GetAsync(address.NeighborhoodId.Value, cancellationToken) as LocalityNeighborhood
+        var neighborhood = address.NeighborhoodId != null
+            ? await _localityRepository.GetAsync(address.NeighborhoodId, cancellationToken) as LocalityNeighborhood
             : null;
 
-        var state = address.StateId.HasValue
-            ? await _localityRepository.GetAsync(address.StateId.Value, cancellationToken) as LocalityState
+        var state = address.StateId != null
+            ? await _localityRepository.GetAsync(address.StateId, cancellationToken) as LocalityState
             : null;
 
-        var country = address.CountryId.HasValue
-            ? await _localityRepository.GetAsync(address.CountryId.Value, cancellationToken) as LocalityCountry
+        var country = address.CountryId != null
+            ? await _localityRepository.GetAsync(address.CountryId, cancellationToken) as LocalityCountry
             : null;
 
         // Note: PostalCode may not have a specific Locality type, handling as generic Locality
         // Using reflection to get Name property if it exists
-        var postalCode = address.PostalCodeId.HasValue
-            ? await _localityRepository.GetAsync(address.PostalCodeId.Value, cancellationToken)
+        var postalCode = address.PostalCodeId != null
+            ? await _localityRepository.GetAsync(address.PostalCodeId, cancellationToken)
             : null;
 
         return new GetAddressByKeyQueryResponse

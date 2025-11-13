@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Core.LibrariesApplication.Commands;
+namespace Core.Libraries.Application.Commands;
 
 /// <summary>
 /// Represents a handler for a command that returns a response.

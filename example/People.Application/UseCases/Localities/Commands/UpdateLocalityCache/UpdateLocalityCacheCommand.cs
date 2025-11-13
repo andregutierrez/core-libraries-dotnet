@@ -1,4 +1,4 @@
-namespace People.Application.UseCases.Localities.Commands;
+namespace People.Application.UseCases.Localities.Commands.UpdateLocalityCache;
 
 using Core.Libraries.Application.Commands;
 

@@ -1,7 +1,16 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using People.Application.UseCases.Contacts.Commands;
-using People.Application.UseCases.Contacts.Queries;
+using People.Application.UseCases.Contacts.Commands.CreatePhoneContact;
+using People.Application.UseCases.Contacts.Commands.DeleteContact;
+using People.Application.UseCases.Contacts.Commands.ImportContact;
+using People.Application.UseCases.Contacts.Commands.RemoveContactAsPrimary;
+using People.Application.UseCases.Contacts.Commands.SetContactAsPrimary;
+using People.Application.UseCases.Contacts.Commands.UpdateContactNotes;
+using People.Application.UseCases.Contacts.Commands.UpdatePhoneContact;
+using People.Application.UseCases.Contacts.Queries.GetContactByKey;
+using People.Application.UseCases.Contacts.Queries.GetContactsByPersonKeyAndType;
+using People.Application.UseCases.Contacts.Queries.GetPrimaryContactByPersonKeyAndType;
 
 namespace People.Api.Controllers;
 

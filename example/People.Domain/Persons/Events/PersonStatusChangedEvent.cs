@@ -1,6 +1,6 @@
 namespace People.Domain.Persons.Events;
 
-using People.Domain.Persons.Statuses;
+using People.Domain.Persons.Entities.Statuses;
 
 /// <summary>
 /// Domain event raised when a person's status is changed.

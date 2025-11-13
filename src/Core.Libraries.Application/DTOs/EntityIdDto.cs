@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace Core.LibrariesApplication.DTOs;
+namespace Core.Libraries.Application.DTOs;
 
 /// <summary>
 /// Represents a data transfer object for entity identifiers.

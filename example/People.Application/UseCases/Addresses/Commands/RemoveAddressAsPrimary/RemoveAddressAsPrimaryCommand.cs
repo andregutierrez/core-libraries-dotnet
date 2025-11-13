@@ -1,4 +1,4 @@
-namespace People.Application.UseCases.Addresses.Commands;
+namespace People.Application.UseCases.Addresses.Commands.RemoveAddressAsPrimary;
 
 using Core.Libraries.Application.Commands;
 

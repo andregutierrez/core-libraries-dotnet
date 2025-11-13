@@ -1,6 +1,6 @@
-namespace People.Application.UseCases.Persons.Commands;
+namespace People.Application.UseCases.Persons.Commands.DeactivatePerson;
 
-using Core.LibrariesApplication.Commands;
+using Core.Libraries.Application.Commands;
 
 /// <summary>
 /// Command to deactivate a person (sets status to Inactive).

@@ -1,4 +1,4 @@
-﻿namespace Core.LibrariesApplication.DTOs;
+namespace Core.Libraries.Application.DTOs;
 
 /// <summary>
 /// Represents a paginated result containing a collection of data items along with pagination metadata.

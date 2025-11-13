@@ -1,8 +1,9 @@
 namespace People.Application.UseCases.Localities.Commands.ImportLocality;
 
 using Core.Libraries.Application.Commands;
+using Core.Libraries.Domain.Entities;
 using Core.Libraries.Domain.Entities.Identifiers;
-using Core.LibrariesDomain.Services.Repositories;
+using Core.Libraries.Domain.Services.Repositories;
 using People.Domain.Localities.Entities;
 using People.Domain.Localities.Services.Repositories;
 using People.Domain.Localities.ValueObjects;

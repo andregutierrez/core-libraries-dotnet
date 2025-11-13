@@ -1,4 +1,4 @@
-namespace People.Application.UseCases.Contacts.Queries;
+namespace People.Application.UseCases.Contacts.Queries.GetPrimaryContactByPersonKeyAndType;
 
 using Core.Libraries.Application.Queries;
 

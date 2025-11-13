@@ -1,4 +1,4 @@
-﻿namespace Core.LibrariesDomain.Enums
+namespace Core.Libraries.Domain.Tests.Enums
 {
     /// <summary>
     /// Enumerates the different kinds of contact information that can be stored for an individual.

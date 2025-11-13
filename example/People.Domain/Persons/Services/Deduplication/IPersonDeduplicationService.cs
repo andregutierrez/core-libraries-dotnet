@@ -1,4 +1,4 @@
-namespace People.Domain.Persons.Services;
+namespace People.Domain.Persons.Services.Deduplication;
 
 using People.Domain.Persons.Entities;
 using People.Domain.Persons.ValueObjects;

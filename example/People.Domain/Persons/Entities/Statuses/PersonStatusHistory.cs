@@ -1,4 +1,4 @@
-namespace People.Domain.Persons.Statuses;
+namespace People.Domain.Persons.Entities.Statuses;
 
 using Core.Libraries.Domain.Entities.Statuses;
 

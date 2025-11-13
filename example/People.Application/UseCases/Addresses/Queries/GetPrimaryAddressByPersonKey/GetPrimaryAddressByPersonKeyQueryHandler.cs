@@ -64,20 +64,20 @@ public class GetPrimaryAddressByPersonKeyQueryHandler : IQueryHandler<GetPrimary
         var street = await _localityRepository.GetAsync(primaryAddress.StreetId, cancellationToken) as LocalityStreet;
         var city = await _localityRepository.GetAsync(primaryAddress.CityId, cancellationToken) as LocalityCity;
 
-        var neighborhood = primaryAddress.NeighborhoodId.HasValue
-            ? await _localityRepository.GetAsync(primaryAddress.NeighborhoodId.Value, cancellationToken) as LocalityNeighborhood
+        var neighborhood = primaryAddress.NeighborhoodId != null
+            ? await _localityRepository.GetAsync(primaryAddress.NeighborhoodId, cancellationToken) as LocalityNeighborhood
             : null;
 
-        var state = primaryAddress.StateId.HasValue
-            ? await _localityRepository.GetAsync(primaryAddress.StateId.Value, cancellationToken) as LocalityState
+        var state = primaryAddress.StateId != null
+            ? await _localityRepository.GetAsync(primaryAddress.StateId, cancellationToken) as LocalityState
             : null;
 
-        var country = primaryAddress.CountryId.HasValue
-            ? await _localityRepository.GetAsync(primaryAddress.CountryId.Value, cancellationToken) as LocalityCountry
+        var country = primaryAddress.CountryId != null
+            ? await _localityRepository.GetAsync(primaryAddress.CountryId, cancellationToken) as LocalityCountry
             : null;
 
-        var postalCode = primaryAddress.PostalCodeId.HasValue
-            ? await _localityRepository.GetAsync(primaryAddress.PostalCodeId.Value, cancellationToken)
+        var postalCode = primaryAddress.PostalCodeId != null
+            ? await _localityRepository.GetAsync(primaryAddress.PostalCodeId, cancellationToken)
             : null;
 
         return new GetPrimaryAddressByPersonKeyQueryResponse

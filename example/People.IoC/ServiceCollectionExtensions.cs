@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MediatR;
 using People.Infra.Data.Context;
 using People.Infra.Data.Repositories;
 using People.Domain.Addresses.Services.Repositories;
@@ -9,9 +8,8 @@ using People.Domain.Contacts.Services.Repositories;
 using People.Domain.Localities.Services.Repositories;
 using People.Domain.Persons.Services.Repositories;
 using People.Application.Services.Repositories;
-using People.Application.DTOs;
-using Core.LibrariesDomain.Services.Repositories;
-using Core.LibrariesInfra.Data.Postgress.UoW;
+using Core.Libraries.Domain.Services.Repositories;
+using Core.Libraries.Infra.Data.UoW;
 
 namespace People.IoC;
 

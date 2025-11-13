@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Core.LibrariesDomain.Events;
+namespace Core.Libraries.Domain.Events;
 
 /// <summary>
 /// Represents a base event notification that implements <see cref="INotification"/>.

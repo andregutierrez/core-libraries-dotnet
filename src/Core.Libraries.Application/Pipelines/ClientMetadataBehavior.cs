@@ -1,13 +1,13 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Core.LibrariesApplication.Commands;
+using Core.Libraries.Application.Commands;
 
-namespace Core.LibrariesApplication.Behavior;
+namespace Core.Libraries.Application.Pipelines;
 
 public class ClientMetadataBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : ICommand

@@ -1,9 +1,6 @@
-namespace People.Application.UseCases.Addresses.Commands;
+namespace People.Application.UseCases.Addresses.Commands.CreateAddress;
 
-using Core.LibrariesApplication.Commands;
-using Core.Libraries.Domain.Entities;
-using Core.Libraries.Domain.Entities.Identifiers;
-using People.Domain.Addresses.ValueObjects;
+using Core.Libraries.Application.Commands;
 
 /// <summary>
 /// Command to create a new address for a person.

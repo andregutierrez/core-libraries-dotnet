@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using People.Domain.Persons.Statuses;
 using Core.Libraries.Domain.Entities.Identifiers;
+using People.Domain.Persons.Entities.Statuses;
+using Core.Libraries.Domain.Entities;
 
 namespace People.Infra.Data.Mappings;
 

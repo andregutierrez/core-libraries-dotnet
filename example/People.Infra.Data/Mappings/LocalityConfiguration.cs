@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using People.Domain.Localities.Entities;
 using People.Domain.Localities.ValueObjects;
 using Core.Libraries.Domain.Entities.Identifiers;
+using Core.Libraries.Domain.Entities;
 
 namespace People.Infra.Data.Mappings;
 
@@ -32,7 +33,7 @@ public class LocalityConfiguration : IEntityTypeConfiguration<Locality>
         builder.Property(l => l.Type)
             .HasConversion(
                 t => t.Code,
-                c => LocalityType.FromCode(c) ?? throw new InvalidOperationException($"Invalid LocalityType code: {c}"))
+                c => LocalityType.FromCode(c) ?? LocalityType.City)
             .HasColumnName("LocalityTypeCode")
             .IsRequired();
 
@@ -53,40 +54,40 @@ public class LocalityConfiguration : IEntityTypeConfiguration<Locality>
             .HasColumnName("CachedAt")
             .IsRequired();
 
-        // LocalityCity specific properties
-        builder.Entity<LocalityCity>()
-            .Property(c => c.Name)
-            .HasColumnName("Name")
-            .HasMaxLength(200)
-            .IsRequired();
+        //// LocalityCity specific properties
+        //builder.Entity<LocalityCity>()
+        //    .Property(c => c.Name)
+        //    .HasColumnName("Name")
+        //    .HasMaxLength(200)
+        //    .IsRequired();
 
-        // LocalityCountry specific properties
-        builder.Entity<LocalityCountry>()
-            .Property(c => c.Name)
-            .HasColumnName("Name")
-            .HasMaxLength(200)
-            .IsRequired();
+        //// LocalityCountry specific properties
+        //builder.Entity<LocalityCountry>()
+        //    .Property(c => c.Name)
+        //    .HasColumnName("Name")
+        //    .HasMaxLength(200)
+        //    .IsRequired();
 
-        // LocalityState specific properties
-        builder.Entity<LocalityState>()
-            .Property(s => s.Name)
-            .HasColumnName("Name")
-            .HasMaxLength(200)
-            .IsRequired();
+        //// LocalityState specific properties
+        //builder.Entity<LocalityState>()
+        //    .Property(s => s.Name)
+        //    .HasColumnName("Name")
+        //    .HasMaxLength(200)
+        //    .IsRequired();
 
-        // LocalityNeighborhood specific properties
-        builder.Entity<LocalityNeighborhood>()
-            .Property(n => n.Name)
-            .HasColumnName("Name")
-            .HasMaxLength(200)
-            .IsRequired();
+        //// LocalityNeighborhood specific properties
+        //builder.Entity<LocalityNeighborhood>()
+        //    .Property(n => n.Name)
+        //    .HasColumnName("Name")
+        //    .HasMaxLength(200)
+        //    .IsRequired();
 
-        // LocalityStreet specific properties
-        builder.Entity<LocalityStreet>()
-            .Property(s => s.Name)
-            .HasColumnName("Name")
-            .HasMaxLength(200)
-            .IsRequired();
+        //// LocalityStreet specific properties
+        //builder.Entity<LocalityStreet>()
+        //    .Property(s => s.Name)
+        //    .HasColumnName("Name")
+        //    .HasMaxLength(200)
+        //    .IsRequired();
 
         // Indexes
         builder.HasIndex(l => l.Key.Value)

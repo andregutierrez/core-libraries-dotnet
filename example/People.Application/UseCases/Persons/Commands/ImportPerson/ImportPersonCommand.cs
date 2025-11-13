@@ -1,6 +1,6 @@
-namespace People.Application.UseCases.Persons.Commands;
+namespace People.Application.UseCases.Persons.Commands.ImportPerson;
 
-using Core.LibrariesApplication.Commands;
+using Core.Libraries.Application.Commands;
 
 /// <summary>
 /// Command to import a person from an external system with a specific alternate key.

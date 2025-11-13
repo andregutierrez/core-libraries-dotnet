@@ -1,4 +1,4 @@
-namespace Core.LibrariesDomain.Enums;
+namespace Core.Libraries.Domain.Tests.Enums;
 
 /// <summary>
 /// Defines the supported payload formats for structured and semi-structured data exchange.

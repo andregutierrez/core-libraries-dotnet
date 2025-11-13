@@ -1,17 +1,15 @@
 namespace People.Application.UseCases.Addresses.Queries.SearchAddresses;
 
 using System.Linq.Expressions;
-using System.Reflection;
 using Core.Libraries.Application.Queries;
 using Core.Libraries.Domain.Entities;
-using Core.Libraries.Domain.Entities.Identifiers;
 using People.Application.DTOs;
 using People.Domain.Addresses.Entities;
 using People.Domain.Addresses.Services.Repositories;
 using People.Domain.Persons.Services.Repositories;
 using People.Domain.Localities.Services.Repositories;
 using People.Domain.Localities.Entities;
-using Core.LibrariesDomain.Services.Repositories;
+using Core.Libraries.Domain.Services.Repositories;
 
 /// <summary>
 /// Handler for the SearchAddressesQuery.
@@ -93,12 +91,12 @@ public class SearchAddressesQueryHandler : IQueryHandler<SearchAddressesQuery, S
 
         // Build filter expression
         Expression<Func<Address, bool>> predicate = a =>
-            (!personId.HasValue || a.PersonId == personId.Value) &&
+            (personId != null || a.PersonId.Value == personId.Value) &&
             (addressType == null || a.Type == addressType) &&
             (!request.IsPrimary.HasValue || a.IsPrimary == request.IsPrimary.Value) &&
-            (!cityId.HasValue || a.CityId == cityId.Value) &&
-            (!stateId.HasValue || a.StateId == stateId.Value) &&
-            (!countryId.HasValue || a.CountryId == countryId.Value);
+            (cityId != null || a.CityId.Value == cityId.Value) &&
+            (stateId != null || a.StateId.Value == stateId.Value) &&
+            (countryId != null || a.CountryId.Value == countryId.Value);
 
         // Get all matching addresses (for total count)
         var allAddresses = await _addressRepository.SearchAsync(
@@ -124,12 +122,12 @@ public class SearchAddressesQueryHandler : IQueryHandler<SearchAddressesQuery, S
             // For search results, we only need minimal locality information with names
             var city = await _localityRepository.GetAsync(address.CityId, cancellationToken) as LocalityCity;
 
-            var state = address.StateId.HasValue
-                ? await _localityRepository.GetAsync(address.StateId.Value, cancellationToken) as LocalityState
+            var state = address.StateId != null
+                ? await _localityRepository.GetAsync(address.StateId, cancellationToken) as LocalityState
                 : null;
 
-            var country = address.CountryId.HasValue
-                ? await _localityRepository.GetAsync(address.CountryId.Value, cancellationToken) as LocalityCountry
+            var country = address.CountryId != null
+                ? await _localityRepository.GetAsync(address.CountryId, cancellationToken) as LocalityCountry
                 : null;
 
             // Resolve PersonId to PersonKey

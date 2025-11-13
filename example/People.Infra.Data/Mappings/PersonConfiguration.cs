@@ -2,10 +2,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using People.Domain.Persons.Entities;
 using People.Domain.Persons.ValueObjects;
-using People.Domain.Persons.Identifiers;
-using People.Domain.Persons.Statuses;
 using Core.Libraries.Domain.Entities.Identifiers;
 using System.Linq.Expressions;
+using People.Domain.Persons.Entities.Identifiers;
+using People.Domain.Persons.Entities.Statuses;
+using Core.Libraries.Domain.Entities;
 
 namespace People.Infra.Data.Mappings;
 

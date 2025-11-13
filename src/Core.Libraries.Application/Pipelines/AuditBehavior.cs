@@ -1,11 +1,11 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using Polly;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Core.LibrariesApplication.Commands;
+using Core.Libraries.Application.Commands;
 
-namespace Core.LibrariesApplication.Behavior;
+namespace Core.Libraries.Application.Pipelines;
 
 public class AuditBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : ICommand

@@ -1,10 +1,11 @@
 namespace People.Application.UseCases.Persons.Commands.ImportPerson;
 
-using Core.LibrariesApplication.Commands;
-using Core.Libraries.Domain.Entities.Identifiers;
-using Core.LibrariesDomain.Services.Repositories;
 using People.Domain.Persons.Services.Repositories;
 using People.Domain.Persons.ValueObjects;
+using Core.Libraries.Application.Commands;
+using Core.Libraries.Domain.Services.Repositories;
+using Core.Libraries.Domain.Entities;
+using People.Domain.Persons.Entities;
 
 /// <summary>
 /// Handler for the ImportPersonCommand.

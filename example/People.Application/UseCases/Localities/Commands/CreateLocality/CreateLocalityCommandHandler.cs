@@ -1,12 +1,11 @@
 namespace People.Application.UseCases.Localities.Commands.CreateLocality;
 
-using Core.LibrariesApplication.Commands;
-using Core.Libraries.Domain.Entities.Identifiers;
-using Core.Libraries.Domain.Exceptions;
-using Core.LibrariesDomain.Services.Repositories;
 using People.Domain.Localities.Entities;
 using People.Domain.Localities.Services.Repositories;
 using People.Domain.Localities.ValueObjects;
+using Core.Libraries.Application.Commands;
+using Core.Libraries.Domain.Services.Repositories;
+using Core.Libraries.Domain.Entities;
 
 /// <summary>
 /// Handler for the CreateLocalityCommand.

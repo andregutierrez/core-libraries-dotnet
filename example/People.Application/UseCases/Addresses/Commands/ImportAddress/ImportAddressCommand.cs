@@ -1,4 +1,4 @@
-namespace People.Application.UseCases.Addresses.Commands;
+namespace People.Application.UseCases.Addresses.Commands.ImportAddress;
 
 using Core.Libraries.Application.Commands;
 

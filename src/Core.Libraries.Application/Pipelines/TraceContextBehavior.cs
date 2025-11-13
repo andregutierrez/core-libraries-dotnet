@@ -1,9 +1,9 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Serilog.Context;
-using Core.LibrariesApplication.Commands;
+using Core.Libraries.Application.Commands;
 
-namespace Core.LibrariesApplication.Behavior;
+namespace Core.Libraries.Application.Pipelines;
 
 public class TraceContextBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : ICommand

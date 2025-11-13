@@ -1,8 +1,8 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
-namespace Core.LibrariesApplication.Behavior;
+namespace Core.Libraries.Application.Pipelines;
 
 public class PerformanceBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
 {

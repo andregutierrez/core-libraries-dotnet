@@ -1,4 +1,4 @@
-namespace People.Application.UseCases.Contacts.Commands;
+namespace People.Application.UseCases.Contacts.Commands.SetContactAsPrimary;
 
 using Core.Libraries.Application.Commands;
 

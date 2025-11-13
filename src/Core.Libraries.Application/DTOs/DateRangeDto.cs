@@ -1,4 +1,4 @@
-﻿namespace Core.LibrariesApplication.DTOs;
+namespace Core.Libraries.Application.DTOs;
 
 /// <summary>
 /// Represents a date range filter with optional start and end dates.

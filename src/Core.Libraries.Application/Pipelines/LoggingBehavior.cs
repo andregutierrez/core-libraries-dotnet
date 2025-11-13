@@ -1,10 +1,10 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using Serilog.Context;
 using System.Diagnostics;
-using Core.LibrariesApplication.Commands;
+using Core.Libraries.Application.Commands;
 
-namespace Core.LibrariesApplication.Behavior;
+namespace Core.Libraries.Application.Pipelines;
 
 
 public interface IAuditLog

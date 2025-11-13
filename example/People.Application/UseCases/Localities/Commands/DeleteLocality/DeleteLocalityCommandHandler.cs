@@ -1,9 +1,8 @@
 namespace People.Application.UseCases.Localities.Commands.DeleteLocality;
 
 using Core.Libraries.Application.Commands;
-using Core.Libraries.Domain.Entities.Identifiers;
-using Core.LibrariesDomain.Exceptions;
-using Core.LibrariesDomain.Services.Repositories;
+using Core.Libraries.Domain.Entities;
+using Core.Libraries.Domain.Services.Repositories;
 using People.Domain.Localities.Services.Repositories;
 
 /// <summary>

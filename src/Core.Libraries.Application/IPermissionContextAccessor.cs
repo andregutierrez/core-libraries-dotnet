@@ -1,4 +1,4 @@
-namespace Core.LibrariesApplication;
+namespace Core.Libraries.Application;
 
 public interface IPermissionContextAccessor
 {

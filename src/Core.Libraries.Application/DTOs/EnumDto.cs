@@ -1,4 +1,4 @@
-namespace Core.LibrariesApplication.DTOs;
+namespace Core.Libraries.Application.DTOs;
 
 /// <summary>
 /// Represents an enumeration value with its numeric code and human-readable description,

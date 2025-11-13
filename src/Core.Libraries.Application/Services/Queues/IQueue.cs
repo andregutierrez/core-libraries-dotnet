@@ -1,5 +1,5 @@
-﻿using System;
-namespace Core.LibrariesDomain.Services.Queues
+using System;
+namespace Core.Libraries.Application.Services.Queues
 {
     public interface IQueue<TMessage>
     {

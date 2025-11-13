@@ -1,6 +1,7 @@
-namespace People.Application.UseCases.Contacts.Queries;
+namespace People.Application.UseCases.Contacts.Queries.GetContactsByPersonKeyAndType;
 
 using Core.Libraries.Application.Queries;
+using People.Application.UseCases.Contacts.Queries.GetContactsByPersonKey;
 
 /// <summary>
 /// Query to get all contacts of a specific type for a person.

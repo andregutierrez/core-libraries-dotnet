@@ -1,8 +1,8 @@
+using Core.Libraries.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using People.Domain.Addresses.Entities;
 using People.Domain.Addresses.ValueObjects;
-using Core.Libraries.Domain.Entities.Identifiers;
 
 namespace People.Infra.Data.Mappings;
 
@@ -39,7 +39,7 @@ public class AddressConfiguration : IEntityTypeConfiguration<Address>
         builder.Property(a => a.Type)
             .HasConversion(
                 t => t.Code,
-                c => AddressType.FromCode(c) ?? throw new InvalidOperationException($"Invalid AddressType code: {c}"))
+                c => AddressType.FromCode(c) ?? AddressType.Other)
             .HasColumnName("AddressTypeCode")
             .IsRequired();
 
@@ -60,25 +60,25 @@ public class AddressConfiguration : IEntityTypeConfiguration<Address>
 
         builder.Property(a => a.NeighborhoodId)
             .HasConversion(
-                id => id.HasValue ? id.Value.Value : (int?)null,
+                id => id != null ? id.Value : (int?)null,
                 v => v.HasValue ? new EntityId(v.Value) : null)
             .HasColumnName("NeighborhoodId");
 
         builder.Property(a => a.StateId)
             .HasConversion(
-                id => id.HasValue ? id.Value.Value : (int?)null,
+                id => id != null ? id.Value : (int?)null,
                 v => v.HasValue ? new EntityId(v.Value) : null)
             .HasColumnName("StateId");
 
         builder.Property(a => a.CountryId)
             .HasConversion(
-                id => id.HasValue ? id.Value.Value : (int?)null,
+                id => id != null ? id.Value : (int?)null,
                 v => v.HasValue ? new EntityId(v.Value) : null)
             .HasColumnName("CountryId");
 
         builder.Property(a => a.PostalCodeId)
             .HasConversion(
-                id => id.HasValue ? id.Value.Value : (int?)null,
+                id => id != null ? id.Value : (int?)null,
                 v => v.HasValue ? new EntityId(v.Value) : null)
             .HasColumnName("PostalCodeId");
 

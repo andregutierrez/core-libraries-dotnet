@@ -1,4 +1,4 @@
-namespace Core.LibrariesApplication.Exceptions;
+namespace Core.Libraries.Application.Exceptions;
 
 /// <summary>
 /// Represents the base type for application-layer exceptions.

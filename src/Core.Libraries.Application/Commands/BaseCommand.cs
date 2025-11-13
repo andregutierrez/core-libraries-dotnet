@@ -1,6 +1,6 @@
-namespace Core.LibrariesApplication.Commands;
+namespace Core.Libraries.Application.Commands;
 
-public class BaseCommand : ICommand, IHasPermissionContext, IHasTraceContext, IHasClientMetadata
+public record BaseCommand : ICommand, IHasPermissionContext, IHasTraceContext, IHasClientMetadata
 {
     private PermissionContext? _permission;
     private TraceContext? _trace;

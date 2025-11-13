@@ -1,4 +1,4 @@
-namespace Core.LibrariesApplication.Commands;
+namespace Core.Libraries.Application.Commands;
 
 public interface IHasTraceContext
 {

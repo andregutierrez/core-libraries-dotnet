@@ -1,4 +1,4 @@
-namespace People.Application.UseCases.Persons.Commands;
+namespace People.Application.UseCases.Persons.Commands.RemovePersonIdentifier;
 
 using Core.Libraries.Application.Commands;
 

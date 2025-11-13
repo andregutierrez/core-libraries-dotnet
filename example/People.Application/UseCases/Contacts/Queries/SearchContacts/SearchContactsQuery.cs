@@ -1,6 +1,7 @@
-namespace People.Application.UseCases.Contacts.Queries;
+namespace People.Application.UseCases.Contacts.Queries.SearchContacts;
 
 using Core.Libraries.Application.Queries;
+using People.Application.UseCases.Contacts.Queries.GetContactsByPersonKey;
 
 /// <summary>
 /// Query to search contacts with filters.

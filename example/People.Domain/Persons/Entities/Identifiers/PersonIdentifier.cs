@@ -1,4 +1,4 @@
-namespace People.Domain.Persons.Identifiers;
+namespace People.Domain.Persons.Entities.Identifiers;
 
 using Core.Libraries.Domain.Entities;
 using Core.Libraries.Domain.Entities.Identifiers;

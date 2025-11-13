@@ -1,4 +1,6 @@
-namespace Core.LibrariesApplication.Commands;
+using Core.Libraries.Application;
+
+namespace Core.Libraries.Application.Commands;
 
 public interface IHasClientMetadata
 {

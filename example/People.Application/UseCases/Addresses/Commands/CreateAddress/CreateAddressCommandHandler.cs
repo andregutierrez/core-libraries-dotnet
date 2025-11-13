@@ -1,15 +1,14 @@
 namespace People.Application.UseCases.Addresses.Commands.CreateAddress;
 
-using Core.LibrariesApplication.Commands;
 using Core.Libraries.Domain.Entities;
-using Core.Libraries.Domain.Entities.Identifiers;
 using Core.Libraries.Domain.Exceptions;
-using Core.LibrariesDomain.Services.Repositories;
 using People.Domain.Addresses.Entities;
 using People.Domain.Addresses.Services.Repositories;
 using People.Domain.Addresses.ValueObjects;
 using People.Domain.Persons.Services.Repositories;
 using People.Domain.Localities.Services.Repositories;
+using Core.Libraries.Application.Commands;
+using Core.Libraries.Domain.Services.Repositories;
 
 /// <summary>
 /// Handler for the CreateAddressCommand.
@@ -54,8 +53,7 @@ public class CreateAddressCommandHandler : ICommandHandler<CreateAddressCommand,
     {
         // Resolve PersonKey to EntityId using GetAsync
         var person = await _personRepository.GetAsync(
-            new AlternateKey(request.PersonKey),
-            cancellationToken);
+            new AlternateKey(request.PersonKey), cancellationToken);
         var personId = person.Id;
 
         // Resolve AddressType from code

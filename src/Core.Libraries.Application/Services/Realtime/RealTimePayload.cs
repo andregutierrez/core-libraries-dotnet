@@ -1,4 +1,4 @@
-﻿namespace Core.LibrariesDomain.Services.Realtime;
+namespace Core.Libraries.Application.Services.Realtime;
 
 /// <summary>
 /// Represents the payload to be delivered in a real-time message,

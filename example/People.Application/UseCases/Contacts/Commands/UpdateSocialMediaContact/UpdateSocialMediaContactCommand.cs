@@ -1,4 +1,4 @@
-namespace People.Application.UseCases.Contacts.Commands;
+namespace People.Application.UseCases.Contacts.Commands.UpdateSocialMediaContact;
 
 using Core.Libraries.Application.Commands;
 

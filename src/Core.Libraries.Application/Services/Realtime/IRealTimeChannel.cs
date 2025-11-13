@@ -1,4 +1,4 @@
-namespace Core.LibrariesDomain.Services.Realtime;
+namespace Core.Libraries.Application.Services.Realtime;
 
 /// <summary>
 /// Defines a contract for sending real-time messages to clients.

@@ -1,11 +1,11 @@
-namespace People.Application.UseCases.Addresses.Commands;
+namespace People.Application.UseCases.Addresses.Commands.UpdateAddressType;
 
 using Core.Libraries.Application.Commands;
 
 /// <summary>
 /// Command to update the type of an address.
 /// </summary>
-public class UpdateAddressTypeCommand : BaseCommand
+public record UpdateAddressTypeCommand : BaseCommand
 {
     /// <summary>
     /// Gets the address's alternate key.

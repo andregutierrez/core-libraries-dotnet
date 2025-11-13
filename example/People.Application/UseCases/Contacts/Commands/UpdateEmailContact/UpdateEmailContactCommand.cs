@@ -1,11 +1,11 @@
-namespace People.Application.UseCases.Contacts.Commands;
+namespace People.Application.UseCases.Contacts.Commands.UpdateEmailContact;
 
 using Core.Libraries.Application.Commands;
 
 /// <summary>
 /// Command to update an email contact's email address.
 /// </summary>
-public class UpdateEmailContactCommand : BaseCommand
+public record UpdateEmailContactCommand : BaseCommand
 {
     /// <summary>
     /// Gets the contact's alternate key.

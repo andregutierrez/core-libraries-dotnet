@@ -1,4 +1,4 @@
-﻿namespace Core.LibrariesDomain.Services.Realtime;
+namespace Core.Libraries.Application.Services.Realtime;
 
 /// <summary>
 /// Represents the type of a real-time message to be published through the channel,

@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\People.Application\People.Application.csproj" />
     <ProjectReference Include="..\People.IoC\People.IoC.csproj" />
   </ItemGroup>
 

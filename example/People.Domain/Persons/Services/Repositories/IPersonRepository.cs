@@ -1,7 +1,7 @@
 namespace People.Domain.Persons.Services.Repositories;
 
 using Core.Libraries.Domain.Entities;
-using Core.LibrariesDomain.Services.Repositories;
+using Core.Libraries.Domain.Services.Repositories;
 using People.Domain.Persons.Entities;
 
 /// <summary>

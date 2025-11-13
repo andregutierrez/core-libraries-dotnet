@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "64nU+uDbKCY=",
+  "dgSpecHash": "3AWJ+r6/KWk=",
   "success": true,
-  "projectFilePath": "/home/techleap/Projects/repository/core-libraries-dotnet/src/Core.Libraries.Infra.EventStreaming/Core.Libraries.Infra.EventStreaming.csproj",
+  "projectFilePath": "D:\\Repository\\Git\\andregutierrez\\core-libraries-dotnet\\src\\Core.Libraries.Infra.EventStreaming\\Core.Libraries.Infra.EventStreaming.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -3,7 +3,7 @@ namespace People.Application.UseCases.Addresses.Commands.RemoveAddressAsPrimary;
 using Core.Libraries.Application.Commands;
 using Core.Libraries.Domain.Entities;
 using Core.Libraries.Domain.Entities.Identifiers;
-using Core.LibrariesDomain.Services.Repositories;
+using Core.Libraries.Domain.Services.Repositories;
 using People.Domain.Addresses.Services.Repositories;
 
 /// <summary>

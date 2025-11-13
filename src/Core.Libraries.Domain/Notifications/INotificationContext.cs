@@ -1,6 +1,6 @@
 using FluentValidation.Results;
 
-namespace Core.LibrariesDomain.Notifications;
+namespace Core.Libraries.Domain.Notifications;
 
 /// <summary>
 /// Represents a context for managing validation notifications and errors.

@@ -1,6 +1,6 @@
 namespace People.Application.UseCases.Addresses.Queries.SearchAddresses;
 
-using Core.LibrariesApplication.Queries;
+using Core.Libraries.Application.Queries;
 using People.Application.DTOs;
 
 /// <summary>
