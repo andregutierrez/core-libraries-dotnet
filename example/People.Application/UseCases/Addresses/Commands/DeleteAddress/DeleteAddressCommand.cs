@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to delete an address.
 /// </summary>
-public class DeleteAddressCommand : BaseCommand
+public record DeleteAddressCommand : BaseCommand
 {
     /// <summary>
     /// Gets the address's alternate key.

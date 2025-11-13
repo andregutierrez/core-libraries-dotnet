@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to create a new phone contact for a person (Phone, Mobile, or WhatsApp).
 /// </summary>
-public class CreatePhoneContactCommand : BaseCommand<CreatePhoneContactCommandResponse>
+public record CreatePhoneContactCommand : BaseCommand<CreatePhoneContactCommandResponse>
 {
     /// <summary>
     /// Gets the person's alternate key this contact belongs to.

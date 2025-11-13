@@ -17,7 +17,7 @@ public record BaseCommand : ICommand, IHasPermissionContext, IHasTraceContext, I
     public void SetClient(ClientMetadata client) => _client = client;
 }
 
-public class BaseCommand<TResponse> : ICommand<TResponse>
+public record BaseCommand<TResponse> : ICommand<TResponse>
 {
     private PermissionContext? _permission;
     private TraceContext? _trace;

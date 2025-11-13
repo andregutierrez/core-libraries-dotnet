@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to update a phone contact's phone number.
 /// </summary>
-public class UpdatePhoneContactCommand : BaseCommand
+public record UpdatePhoneContactCommand : BaseCommand
 {
     /// <summary>
     /// Gets the contact's alternate key.

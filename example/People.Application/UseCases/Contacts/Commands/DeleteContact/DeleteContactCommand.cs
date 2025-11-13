@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to delete a contact.
 /// </summary>
-public class DeleteContactCommand : BaseCommand
+public record DeleteContactCommand : BaseCommand
 {
     /// <summary>
     /// Gets the contact's alternate key.

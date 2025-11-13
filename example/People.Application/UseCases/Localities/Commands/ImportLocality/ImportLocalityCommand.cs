@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to import a locality cache entry with a specific alternate key.
 /// </summary>
-public class ImportLocalityCommand : BaseCommand<ImportLocalityCommandResponse>
+public record ImportLocalityCommand : BaseCommand<ImportLocalityCommandResponse>
 {
     /// <summary>
     /// Gets the locality's alternate key from the external system.

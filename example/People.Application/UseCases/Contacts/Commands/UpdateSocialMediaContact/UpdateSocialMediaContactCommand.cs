@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to update a social media contact's account information.
 /// </summary>
-public class UpdateSocialMediaContactCommand : BaseCommand
+public record UpdateSocialMediaContactCommand : BaseCommand
 {
     /// <summary>
     /// Gets the contact's alternate key.

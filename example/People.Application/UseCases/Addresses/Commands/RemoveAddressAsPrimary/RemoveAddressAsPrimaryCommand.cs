@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to remove the primary flag from an address.
 /// </summary>
-public class RemoveAddressAsPrimaryCommand : BaseCommand
+public record RemoveAddressAsPrimaryCommand : BaseCommand
 {
     /// <summary>
     /// Gets the address's alternate key.

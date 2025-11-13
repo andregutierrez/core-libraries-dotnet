@@ -20,7 +20,6 @@
     // Configurações do OmniSharp (C# extension)
     "omnisharp.enableRoslynAnalyzers": true,
     "omnisharp.enableEditorConfigSupport": true,
-    "omnisharp.organizeImportsOnFormat": true,
     // Configurações do editor para C#
     "[csharp]": {
         "editor.formatOnSave": true,
@@ -51,6 +50,7 @@
     "dotnet.testExplorer.autoRun": false,
     "dotnet.testExplorer.autoReveal": false,
     // Timeout para operações de debug (em milissegundos)
-    "debug.timeout": 30000
+    "debug.timeout": 30000,
+    "dotnet.formatting.organizeImportsOnFormat": true
 }
 

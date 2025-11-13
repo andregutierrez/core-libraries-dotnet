@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to add an external system identifier to a person.
 /// </summary>
-public class AddPersonIdentifierCommand : BaseCommand
+public record AddPersonIdentifierCommand : BaseCommand
 {
     /// <summary>
     /// Gets the person's alternate key.

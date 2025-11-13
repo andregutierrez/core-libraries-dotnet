@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to create a new email contact for a person.
 /// </summary>
-public class CreateEmailContactCommand : BaseCommand<CreateEmailContactCommandResponse>
+public record CreateEmailContactCommand : BaseCommand<CreateEmailContactCommandResponse>
 {
     /// <summary>
     /// Gets the person's alternate key this contact belongs to.

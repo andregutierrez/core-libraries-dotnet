@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to create a new locality cache entry.
 /// </summary>
-public class CreateLocalityCommand : BaseCommand<CreateLocalityCommandResponse>
+public record CreateLocalityCommand : BaseCommand<CreateLocalityCommandResponse>
 {
     /// <summary>
     /// Gets the locality's alternate key from the locality microservice.

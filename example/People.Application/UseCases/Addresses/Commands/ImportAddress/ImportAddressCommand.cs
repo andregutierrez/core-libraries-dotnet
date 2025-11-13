@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to import an address from an external system with a specific alternate key.
 /// </summary>
-public class ImportAddressCommand : BaseCommand<ImportAddressCommandResponse>
+public record ImportAddressCommand : BaseCommand<ImportAddressCommandResponse>
 {
     /// <summary>
     /// Gets the alternate key from the external system.

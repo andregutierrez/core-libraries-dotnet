@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to remove the primary flag from a contact.
 /// </summary>
-public class RemoveContactAsPrimaryCommand : BaseCommand
+public record RemoveContactAsPrimaryCommand : BaseCommand
 {
     /// <summary>
     /// Gets the contact's alternate key.

@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to deactivate a person (sets status to Inactive).
 /// </summary>
-public class DeactivatePersonCommand : BaseCommand
+public record DeactivatePersonCommand : BaseCommand
 {
     /// <summary>
     /// Gets the person's alternate key.

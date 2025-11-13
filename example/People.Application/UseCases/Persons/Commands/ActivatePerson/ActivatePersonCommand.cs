@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to activate a person (sets status to Active).
 /// </summary>
-public class ActivatePersonCommand : BaseCommand
+public record ActivatePersonCommand : BaseCommand
 {
     /// <summary>
     /// Gets the person's alternate key.

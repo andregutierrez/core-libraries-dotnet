@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to update a person's birth date.
 /// </summary>
-public class UpdatePersonBirthDateCommand : BaseCommand
+public record UpdatePersonBirthDateCommand : BaseCommand
 {
     /// <summary>
     /// Gets the person's alternate key.

@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to update a person's gender.
 /// </summary>
-public class UpdatePersonGenderCommand : BaseCommand
+public record UpdatePersonGenderCommand : BaseCommand
 {
     /// <summary>
     /// Gets the person's alternate key.

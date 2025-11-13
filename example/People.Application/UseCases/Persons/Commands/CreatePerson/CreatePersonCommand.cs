@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to create a new person.
 /// </summary>
-public class CreatePersonCommand : BaseCommand<CreatePersonCommandResponse>
+public record CreatePersonCommand : BaseCommand<CreatePersonCommandResponse>
 {
     /// <summary>
     /// Gets the person's first name.

@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to remove an external system identifier from a person.
 /// </summary>
-public class RemovePersonIdentifierCommand : BaseCommand
+public record RemovePersonIdentifierCommand : BaseCommand
 {
     /// <summary>
     /// Gets the person's alternate key.

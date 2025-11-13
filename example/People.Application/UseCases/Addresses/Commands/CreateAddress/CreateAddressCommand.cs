@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to create a new address for a person.
 /// </summary>
-public class CreateAddressCommand : BaseCommand<CreateAddressCommandResponse>
+public record CreateAddressCommand : BaseCommand<CreateAddressCommandResponse>
 {
     /// <summary>
     /// Gets the person's alternate key this address belongs to.

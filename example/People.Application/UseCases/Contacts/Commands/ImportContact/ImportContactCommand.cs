@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to import a contact from an external system with a specific alternate key.
 /// </summary>
-public class ImportContactCommand : BaseCommand<ImportContactCommandResponse>
+public record ImportContactCommand : BaseCommand<ImportContactCommandResponse>
 {
     /// <summary>
     /// Gets the alternate key from the external system.

@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to update a locality cache entry.
 /// </summary>
-public class UpdateLocalityCacheCommand : BaseCommand
+public record UpdateLocalityCacheCommand : BaseCommand
 {
     /// <summary>
     /// Gets the locality's alternate key.

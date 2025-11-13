@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to update a person's name.
 /// </summary>
-public class UpdatePersonNameCommand : BaseCommand
+public record UpdatePersonNameCommand : BaseCommand
 {
     /// <summary>
     /// Gets the person's alternate key.

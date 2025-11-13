@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to import a person from an external system with a specific alternate key.
 /// </summary>
-public class ImportPersonCommand : BaseCommand<ImportPersonCommandResponse>
+public record ImportPersonCommand : BaseCommand<ImportPersonCommandResponse>
 {
     /// <summary>
     /// Gets the person's alternate key from the external system.

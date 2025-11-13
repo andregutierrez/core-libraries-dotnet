@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to delete a locality cache entry.
 /// </summary>
-public class DeleteLocalityCommand : BaseCommand
+public record DeleteLocalityCommand : BaseCommand
 {
     /// <summary>
     /// Gets the locality's alternate key.

@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to create a new social media contact for a person.
 /// </summary>
-public class CreateSocialMediaContactCommand : BaseCommand<CreateSocialMediaContactCommandResponse>
+public record CreateSocialMediaContactCommand : BaseCommand<CreateSocialMediaContactCommandResponse>
 {
     /// <summary>
     /// Gets the person's alternate key this contact belongs to.

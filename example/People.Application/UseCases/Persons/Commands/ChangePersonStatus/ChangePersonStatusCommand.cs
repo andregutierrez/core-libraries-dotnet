@@ -5,7 +5,7 @@ using Core.Libraries.Application.Commands;
 /// <summary>
 /// Command to change a person's status.
 /// </summary>
-public class ChangePersonStatusCommand : BaseCommand
+public record ChangePersonStatusCommand : BaseCommand
 {
     /// <summary>
     /// Gets the person's alternate key.
